@@ -29,6 +29,7 @@ class RagasTestingModule:
             source_meta = raw_chunk.metadata.to_dict()
             filename = source_meta.get('filename') or source_meta.get('file_directory') or "manual.pdf"
             page_num = source_meta.get('page_number', 0)
+            doc_id = source_meta.get('id', 'unknown')
 
             # Create the Node manually
             # This avoids the "AttributeError: from_langchain_document" bug
@@ -37,36 +38,17 @@ class RagasTestingModule:
                 properties={
                     "page_content": clean_text,  # This contains your "SECTION CONTEXT: ..." string
                     "filename": filename,
-                    "page_number": page_num
+                    "page_number": page_num,
+                    "document_id": doc_id
                 }
             )
             ragas_nodes.append(node)
         
-        self.ragas_node = ragas_nodes
+        self.ragas_nodes = ragas_nodes
         # Initialize the Graph
         kg = KnowledgeGraph(nodes=ragas_nodes)
         print("Knowledge Graph built successfully.")
         return kg
-    
-    def build_L2_index(self):
-        # 1. Prepare the text data from your nodes
-        doc_texts = [node.properties["page_content"] for node in self.ragas_nodes]
-
-        # 2. Generate Embeddings
-        # We use the 'ragas_embeddings' wrapper to embed the documents
-        print("Generating embeddings for knowledge graph...")
-        doc_embeddings = self.ragas_embeddings.embed_documents(doc_texts)
-
-        # 3. Convert to Numpy (Required for FAISS)
-        doc_embeddings_np = np.array(doc_embeddings).astype("float32")
-
-        # 4. Build the FAISS Index directly
-        dimension = doc_embeddings_np.shape[1]
-        index = faiss.IndexFlatL2(dimension)
-        index.add(doc_embeddings_np)
-
-        print(f"FAISS Index built with {index.ntotal} documents.")
-        return index
     
 
 
@@ -100,14 +82,15 @@ class RagasTestingModule:
             
             # 4. Validate & Save List
             current_batch_count = 0
-            if "cases" in data and isinstance(data["cases"], list):
-                for item in data["cases"]:
+            if "test_cases" in data and isinstance(data["test_cases"], list):
+                for item in data["test_cases"]:
                     if "query" in item and "reference" in item:
                         test_cases.append({
                             "user_input": item["query"],
                             "reference": item["reference"],
                             "source_context": context,
-                            "page": node.properties["page_number"]
+                            "page": node.properties["page_number"],
+                            "ids": node.properties["document_id"]
                         })
                         current_batch_count += 1
                 print(f"    -> Successfully added {current_batch_count} test cases.")
@@ -126,8 +109,7 @@ class RagasTestingModule:
 
 
 
-    def test_keywords_retrieval_faiss(self, prompt_template, k =1):
-        scenarios = self.get_teacher_values_for_keywords_retrieval_test(prompt_template)
+    def test_keywords_retrieval_faiss(self, scenarios, k =1):
         # ==========================================
         # STEP 3: Take the Exam (Run Retrieval)
         # ==========================================
@@ -137,10 +119,14 @@ class RagasTestingModule:
         # test_questions = scenarios[scenarios['page']!=1]["user_input"].tolist()
         test_questions = scenarios["user_input"].tolist()
         ground_truths = scenarios["reference"].tolist()
+        ground_truths_ids = scenarios["ids"].tolist()
+
         retrieved_contexts = []
+        retrieved_ids = []
+        distances_found = []
 
         doc_texts = [node.properties["page_content"] for node in self.ragas_nodes]
-
+        doc_ids = [node.properties["document_id"] for node in self.ragas_nodes]
 
         for query in test_questions:
             # 1. Embed the query using the same embedding model
@@ -148,20 +134,28 @@ class RagasTestingModule:
             query_embedding_np = np.array([query_embedding]).astype("float32")
             
             # 2. Search the FAISS index (Retrieve top 1 result)
-            distances, indices = self.index.search(query_embedding_np, k)
+            distances, indices = self.index.search(query_embedding_np, 1)
             
             # 3. Extract the actual text based on the returned indices
             # indices[0] contains the list of IDs found for the first query
             found_texts = [doc_texts[idx] for idx in indices[0]]
-            retrieved_contexts.append(found_texts)
+            found_ids = [doc_ids[idx] for idx in indices[0]]
 
-        # Create the dataset Ragas expects
-        evaluation_data = {
-            "user_input": test_questions,      # What the user typed
-            "reference": ground_truths,        # The correct answer/fact
-            "retrieved_contexts": retrieved_contexts, # What your system found
-            "distances": distances
-        }
+            dist_found = [distances[0][i] for i in range(len(distances[0]))]
+
+            retrieved_contexts.append(found_texts)
+            retrieved_ids.append(found_ids)
+            distances_found.append(dist_found)  
+
+            # Create the dataset Ragas expects
+            evaluation_data = {
+                "user_input": test_questions,      # What the user typed
+                "reference": ground_truths, # The correct answer/fact
+                "reference_ids":ground_truths_ids, #The correct doc ID      
+                "retrieved_contexts": retrieved_contexts, # What your system found
+                "retrieved_ids":retrieved_ids,
+                "distances": distances_found
+            }
 
         ragas_dataset = Dataset.from_dict(evaluation_data)
 
