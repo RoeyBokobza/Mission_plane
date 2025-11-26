@@ -66,9 +66,9 @@ class ParsingAndChunkingHandler:
         print("2. Chunking filtered elements...")
         chunks = chunk_by_title(
             elements=cleaned_elements,
-            max_characters=11000,
-            combine_text_under_n_chars=10,
-            overlap = 1000
+            max_characters=max_characters,
+            combine_text_under_n_chars=combine_text_under_n_chars,
+            overlap = overlap
             # new_after_n_chars=4000
         )
 
