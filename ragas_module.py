@@ -9,6 +9,9 @@ from datasets import Dataset
 
 import time ## needed only for Google API calls.
 import pandas as pd 
+from ragas import RunConfig
+from tqdm import tqdm
+
 
 class RagasTestingModule:
     def __init__(self, ragas_embeddings, judge_llm, vector_db_retriever):
@@ -52,64 +55,78 @@ class RagasTestingModule:
     
 
 
-    def get_teacher_values_for_keywords_retrieval_test(self, prompt_template):
+    
+    def generate_qa_pairs(self, prompt, full_doc_text, num_pairs):
+        print(f"Generating questions and answers pairs...")
+        response = self.ragas_judge_llm.invoke(prompt.format(full_doc_text, num_pairs))
+        clean_json = response.content.replace("```json", "").replace("```", "").strip()
+        data = json.loads(clean_json)
+        qa_pairs = data.get("qa_pairs", [])
+        return qa_pairs
 
-                # ==========================================
-        # 3. GENERATION LOOP (The Exam - Scaled Up)
-        # ==========================================
-        print("\nStarting Generation Loop...")
 
-        test_cases = []
+    def generate_evaluation_dataset(self,qa_pairs):
+        final_dataset = []
+
+        def is_quote_in_text(quote, text):
+            # Simple fuzzy match (ignore case/whitespace)
+            q = " ".join(quote.lower().split())
+            t = " ".join(text.lower().split())
+
+            return np.array([i in t for i in q.split(' ')]).all()
 
 
-        for i, node in enumerate(self.ragas_nodes):
-            context = node.properties["page_content"]
+        for item in qa_pairs:
+            query = item["query"]
+            answer = item["answer"]
+            q_type = item.get("type", "unknown")
+            quotes = item.get("verbatim_quotes", [])
             
-            # if len(context) < 50:
-            #     print(f"  - Node {i}: Skipped (Too short)")
-            #     continue
-
-            print(f"  - Processing Node {i} (Generating ~10 cases)...")
-
-            # 1. Call Gemini
-            # We increase output tokens slightly to ensure the full list fits
-            response = self.ragas_judge_llm.invoke(prompt_template.format(text=context[:2000]))
+            # Ensure quotes is a list
+            if isinstance(quotes, str): quotes = [quotes]
             
-            # 2. Clean Response
-            clean_str = response.content.replace("```json", "").replace("```", "").strip()    
-            # 3. Parse JSON
-            data = json.loads(clean_str)
+            # The Union Search
+            matched_chunk_texts = []
+            matched_chunk_ids = []
             
-            # 4. Validate & Save List
-            current_batch_count = 0
-            if "test_cases" in data and isinstance(data["test_cases"], list):
-                for item in data["test_cases"]:
-                    if "query" in item and "reference" in item:
-                        test_cases.append({
-                            "user_input": item["query"],
-                            "reference": item["reference"],
-                            "source_context": context,
-                            "page": node.properties["page_number"],
-                            "ids": node.properties["document_id"]
-                        })
-                        current_batch_count += 1
-                print(f"    -> Successfully added {current_batch_count} test cases.")
+            for node in tqdm(self.ragas_nodes, desc="Searching for ground truth chunks ids.."):
+                chunk_text = node.properties['page_content']
+                
+                # Does this chunk contain any of the evidence?
+                is_relevant = False
+                for quote in quotes:
+                    if is_quote_in_text(quote, chunk_text):
+                        is_relevant = True
+                        break
+                
+                if is_relevant:
+                    matched_chunk_texts.append(chunk_text)
+                    matched_chunk_ids.append(node.properties["document_id"])
+            
+            # Only keep if we found source documents
+            if matched_chunk_ids:
+                final_dataset.append({
+                    "user_input": query,
+                    "reference": answer,
+                    "ground_truth_contexts": matched_chunk_texts, # The Ground Truth Texts
+                    "ground_truth_ids": matched_chunk_ids,     # The Ground Truth IDs
+                    "query_type": q_type                       # 'single_hop' or 'multi_hop'
+                })
+                print(f"  - [{q_type}] Query: '{query[:30]}...' -> IDs: {matched_chunk_ids}")
             else:
-                print(f"    -> Failed (JSON missing 'cases' list). Raw keys: {data.keys()}")
-                    
-            # except Exception as e:
-            #     print(f"    -> Error generating for Node {i}: {e}")
-            
-            # Sleep to be polite to API limits
-            time.sleep(2)
-            
-        df_results = pd.DataFrame(test_cases)
-        return df_results
+                print(f"  - Warning: Quotes not found for query '{query[:30]}...'")
+
+        if final_dataset:
+            evaluation_df = pd.DataFrame(final_dataset)
+        else:
+            evaluation_df = pd.DataFrame(columns = ['user_input', 'reference', 'source_context', 'ids'])
+
+        return evaluation_df
+    
 
 
 
-
-    def test_keywords_retrieval_faiss(self, scenarios, k =1):
+    def test_retrieval_faiss(self, scenarios, k =1):
         # ==========================================
         # STEP 3: Take the Exam (Run Retrieval)
         # ==========================================
@@ -118,8 +135,9 @@ class RagasTestingModule:
         # We need to add a "retrieved_contexts" column to your test dataset
         # test_questions = scenarios[scenarios['page']!=1]["user_input"].tolist()
         test_questions = scenarios["user_input"].tolist()
-        ground_truths = scenarios["reference"].tolist()
-        ground_truths_ids = scenarios["ids"].tolist()
+        ground_truth_answers = scenarios["reference"].tolist()
+        ground_truth_contexts = scenarios["ground_truth_contexts"].tolist()
+        ground_truths_ids = scenarios["ground_truth_ids"].tolist()
 
         retrieved_contexts = []
         retrieved_ids = []
@@ -150,7 +168,8 @@ class RagasTestingModule:
             # Create the dataset Ragas expects
             evaluation_data = {
                 "user_input": test_questions,      # What the user typed
-                "reference": ground_truths, # The correct answer/fact
+                "ground_truth_answers": ground_truth_answers, # The correct answer/fact
+                "ground_truth_context": ground_truth_contexts, # The correct answer/fact
                 "reference_ids":ground_truths_ids, #The correct doc ID      
                 "retrieved_contexts": retrieved_contexts, # What your system found
                 "retrieved_ids":retrieved_ids,
@@ -162,7 +181,7 @@ class RagasTestingModule:
         return ragas_dataset
     
 
-    def evaluate_metrics_for_test(self, metrics, test_dataset):
+    def evaluate_metrics_for_test(self, metrics, test_dataset, cfg):
         # ==========================================
         # STEP 3: Grade the Exam (Calculate Metrics)
         # ==========================================
@@ -174,19 +193,19 @@ class RagasTestingModule:
             dataset=test_dataset,
             metrics=metrics,
             llm=self.ragas_judge_llm,       # Use Gemini as the Judge
-            embeddings=self.ragas_embeddings
-        )
+            embeddings=self.ragas_embeddings,
+            run_config=cfg,
+            column_map={
+            "question": "user_input",
+            # "answer": "ground_truth_answers",
+            "contexts": "retrieved_contexts",
+            "ground_truth": "ground_truth_answers" 
+        }
 
-        # ==========================================
-        # STEP 4: Show Report Card
-        # ==========================================
-        print("\n========================================")
-        print("          EVALUATION REPORT             ")
-        print("========================================")
-        print(results)
+        )
 
         # Convert to table for detailed analysis
         df_scores = results.to_pandas()
-        return df_scores
+        return df_scores, results
     
 
