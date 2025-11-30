@@ -1,0 +1,996 @@
+[
+    {
+        "query": "What are the temperature limits for the Liquid Cooling System (LCS) and what action should be taken if the temperature exceeds 50°C, as well as the procedure for turning off the LCS system?",
+        "answer": "The Liquid Cooling System (LCS) has a nominal fluid supply temperature of 25°C, a controlled range of 25 ±10°C, and a typical actual range of 27 ±2°C. The maximum temperature for transient operation is 40°C, and the MS disconnect temperature is 50°C. If the temperature exceeds 50°C, the entire AMS system must be shut down. To turn off the LCS system, first ensure the RDR, ELINT, and all Rack#7 servers are off. Then, on the LCS Control Panel, press and hold the NOSE/TAIL PUMP PWR and SIDE/IFF/MS RACKS PUMP PWR switches for approximately 1 second each to turn them off. Finally, press the CNTRLR PWR button to power off the LCS Controller, and ensure both ECS and LCS indications in the MS RACKS section are extinguished.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "LCS Temperatures definitions:\na. Nominal fluid supply temperature: 25°C\nb. Controlled range: 25 ±10°C.\nc. Typical actual range: 27 ±2°C\nLCS Temperatures points of interest:\na. Maximum temperature for transient operation: 40°C\nb. MS disconnect temperature: 50°C.",
+            "Temp Range Action\n50°C<T Shut down AMS",
+            "1. Ensure RDR system (hardware) is OFF\n2. Ensure ELINT system (hardware) is OFF\n3. Ensure all Rack#7 servers are OFF\n4 On the LCS Control Panel\na. Stop NOSE/TAIL PUMP PWR: Press and hold NOSE/TAIL PUMP PWR switch for approximately 1 second and verify the ON indication extinguishes\nb. Stop SIDE/IFF/MS RACKS PUMP PWR:\nPress and hold SIDE/IFF/MS RACKS PUMP PWR switch for approximately 1 second and verify the ON indication extinguishes\n5 Press CNTRLR PWR button to power OFF LCS Controller\n6 Verify ECS and LCS are not illuminated in the MS RACKS."
+        ]
+    },
+    {
+        "query": "What are the electrical power limitations for the AMS, specifically regarding current values for generators during RDR SAR Tx mode, and what is the procedure for switching AMS power from external GSE to engine generators?",
+        "answer": "The AMS has specific electrical power limitations. During RDR SAR Tx mode, the typical current values for the left and right 270VDC generators are 44-50A for the Left Generator and 50-54A for the Right Generator, with a fluctuation of ±5A. When switching AMS power from an external 270VDC and 115VAC source to engine generators, first verify/ask the cockpit to power up the APU and main engines, and ensure the APU GENERATOR switch is OFF. Then, ask pilots to switch the 115VAC source. Next, ask the cockpit to engage one 270VDC generator (either \"MS L GEN\" or \"MS R GEN\") and verify its indicator displays ON and the voltage is stable at 270V for 5 seconds. After stabilization, engage the other 270VDC generator and verify its indicator displays ON and stable 270V. Finally, notify the cockpit that the GSE can be disconnected.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "Typical current values for left and right 270VDC generators:\nAMS SAR Tx 44-50 50-54 5",
+            "If AMS powered up using an external 270VDC and 115VAC power, switch the power source to engines generators:\na. Verify/ask cockpit to power up APU and main engines\nb. Check with cockpit that APU GENERATOR switch is OFF\nc. Ask pilots to switch 115VAC source\nd. Ask cockpit to engaged one 270VDC generator only, by pressing either \"MS L GEN\" or \"MS R GEN\"\ne. On MCP top segment, ensure the selected generator indicator (L GEN or R GEN) display ON\nf. On MCP, ensure stable (5 seconds) voltage indication 270V (L GEN or R GEN)\ng. Ask cockpit to engaged the other 270VDC generator\nh. On MCP top segment, ensure the other generator indicator display ON\ni. On MCP, ensure stable (5 seconds) voltage indication 270V for both generators\n25. Notified cockpit that GSE can be disconnected from aircraft"
+        ]
+    },
+    {
+        "query": "What is the purpose of the CB-AGS Handbook, and what are the definitions of a 'WARNING' and a 'CAUTION' as used within this document?",
+        "answer": "The CB-AGS Handbook is designed to guide and assist operators and technicians in operating the AMS, providing general operating instructions under various conditions and instructions for handling system failures. It is intended only for qualified operators and technicians who have undergone specific training. Within this document, a 'WARNING' highlights an essential procedure, practice, condition, or statement that, if not strictly observed, could lead to injury or death of personnel or long-term health hazards. A 'CAUTION' highlights an essential procedure, practice, condition, or statement that, if not strictly observed, could result in damage to or destruction of equipment or loss of mission effectiveness.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "Purpose\nThis document designated to guide and assist operators and technicians with operating the AMS.\nThis document contains general operating instructions, under different operating conditions, and operating instructions for handling system failures.\nThis document is intended for qualified operators and technicians only, who have undergone training courses for the knowledge and operation the AMS.",
+            "WARNING: A warning highlights an essential or maintenance procedure, practice, condition, statement, etc., which, if not strictly observed, could result in injury to, or death of personnel or long-term health hazards.\nCAUTION: A caution highlights an essential or maintenance procedure, practice, condition, statement, etc., which, if not strictly observed, could result in damage to, or destruction of, equipment or loss of mission effectiveness."
+        ]
+    },
+    {
+        "query": "What are the limitations for operating SATCOM and LOS systems, and what specific sanity checks should be performed for the SATCOM system during pre-flight serviceability procedures?",
+        "answer": "Operating SATCOM and LOS systems simultaneously is prohibited. Additionally, SATCOM transmission on the ground is forbidden without direct external cooling to its amplifier in the boiler room, and the SAT antenna must be powered on during taxi, takeoff, and landing. For SATCOM system sanity checks, you should open the CCC Client and verify that the SATCOM system is ON and navigation data is being received (indicated by the \"Ins Receive Msg\" checkbox being checked). Then, load the SATCOM PFM via SyMon and verify the required frequencies are loaded in the CCC Client. To check with a ground station, set SAT mode to AUTO TRACKING to verify it starts Search and Modem Lock, and then set SAT to TX OPERATE to check the full data channel, verifying for Link Quality 4. After the check, set SAT to TX STBY mode and the Antenna to TAKEOFF LANDING mode.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "1. Communication system limitations\na. Operating SAT & LOS systems simultaneously is prohibited\nb. SAT antenna must be powered on during taxi, takeoff and landing",
+            "CAUTION: It is forbidden to transmit SATCOM or LOS on the ground, without direct external cooling to their amplifier in the boiler room",
+            "1. Open CCC Client, verify\na. SATCOM system is ON\nb. Navigation data received (\"Ins Receive Msg\" checkbox is checked)\n2. On SyMon load SATCOM PFM. Verify on CCC Client the required frequencies loaded\n3. Check SATCOM with ground station\na. Set SAT mode to AUTO TRACKING and verify SAT starts Search and Modem Lock\nb. To check full data channel, set SAT to TX OPERATE Verify for Link Quality 4\nc. When finish, Set SAT to TX STBY mode and Antenna to TAKEOFF LANDING mode"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Airborne Mission Segment (AMS) and what is the initial power-up sequence for the AMS, including the MCP switches and the subsequent waiting period?",
+        "answer": "The abbreviation for Airborne Mission Segment is AMS. The initial power-up sequence for the AMS involves verifying electrical power availability (115VAC and 270VDC). On the MCP, you must press the A/C PWR switch (if using aircraft power) or EXT PWR switch (if using external power) and verify it illuminates ON. Then, on the MCP, select and verify that MS PWR, Racks and columns power (R123-A, R123-B, R4, R6-R7-A, R7-B), and C1-A, C1-B, C1-C, C2-A, C2-B, C2-C are illuminated ON. After these switches are activated, a waiting period of six (6) minutes is required for network establishment.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "AMS Airborne Mission Segment",
+            "1. Verify with ground crew/pilots, that AMS electrical power is available (115VAC and 270VDC), either by GSE or main engines\n115VAC power feed\nb. On MCP, press the A/C PWR switch, verify that ON is illuminated\n270VDC power feed\na. If using an external 270VDC converter, on MCP press EXT PWR switch, verify that ON is illuminated\n3. On MCP, select (press) and verify that ON is illuminated:\na. MS PWR\nb. Racks and columns power\n(1) R123-A\n(2) R123-B\n(3) R4\n(4) R6-R7-A\n(5) R7-B\n(6) C1-A, C1-B, C1-C\n(7) C2-A, C2-B, C2-C\n4. Wait six (6) minutes (for network establishment)"
+        ]
+    },
+    {
+        "query": "What are the cooling limitations for MS Racks 1-4, and what is the procedure for operating MS Racks Cooling in ECS Mode?",
+        "answer": "The MS Racks 1-4 cooling system, located in the Baggage compartment, is designed to provide cold air at a maximum of 40°C. For MS Racks Cooling in ECS Mode, first ensure the A/C ECS system is operating. Then, in the MS RACKS section of the LCS control panel, ensure ECS is illuminated (by pressing and holding the ECS switch for approximately 1 second) and LCS is not illuminated (by pressing and holding the LCS switch for approximately 1 second). Verify no faults are illuminated on the LCS Control Panel. All gaspers in the operator's area should be closed, and you should verify no FAULT/WARNING indications in the MS RACKS section.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "MS Racks 1-4 Cooling Limitations\nMS Racks 1-4 cooling system (Baggage compartment) is designed to provide cold air at maximum 40°C",
+            "1. Insure that A/C ECS system is operating\n2. In the MS RACKS section of the LCS control panel: Ensure ECS is illuminated (To turn ON press and hold the ECS switch for approximately 1 second)\n3. In the MS RACKS section of the LCS control panel: Ensure LCS is not illuminated (To turn OFF press and hold the LCS switch for approximately 1 second). Verify no faults are illuminated on LCS Control Panel.\n4. Close all gaspers in operator's area\n5. Verify no FAULT/WARNING in MS RACKS section of the LCS"
+        ]
+    },
+    {
+        "query": "What is the function of the MSN-MTS server, and what troubleshooting steps should be taken if SyMon is not connected and shows incorrect location and heading at PDCS?",
+        "answer": "The MSN-MTS server contains Mission apps, Symon MCS legacy, and MTS agents, affecting functionalities such as Mission operation (excluding MSDC), INS Navigation, Symon data (FIE model), AVN avionics discretes, IO2LAN discretes, Radar CTS server, EOIR video display in PDCS, MILP recording, PRTG – hardware monitoring on Symon, SyMon connection, and various agents for interfaces to Mission apps. If SyMon is not connected and shows incorrect location and heading at PDCS, it indicates that MTS processes are not running. The recommended troubleshooting action is to open VM Center and restart the MSN-MTS VM. If the problem persists, technical team support should be called.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "Server MSN-MTS Contains Mission apps Symon MCS legacy MTS agents Functionality affected • Mission operation o INS Navigation (exclude MSDC) o Symon data (FIE model) o AVN avionics discretes o IO2LAN discretes • Radar CTS server • EOIR video display in PDCS • MILP recording • PRTG – hardware monitoring on Symon • SyMon connection • Agents - Interfaces to Mission apps o Power control o PDCS Navigation o LCS data o COMINT control and BIT o PFM loading to SDN, ESM, CCC (radio, LOS, SATCOM) o RPP control o Control and monitoring Linux & Windows services",
+            "SyMon SyMon not MTS processes Open VM Center and Startup connected and are not running restart MSN-MTS VM incorrect location and heading at PDCS If problem persist, call technician team"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Electronic Surveillance Measures (ESM), and what are the sanity check steps for the ESM system, including verifying its state and LRUs?",
+        "answer": "The abbreviation for Electronic Surveillance Measures is ESM. To perform sanity checks for the ESM system, first open EOWS and verify that the ESM state is INIT. Then, operate the ESMP and wait until ESM sets to STBY mode. On the ESMP Monitoring tab in EOWS, verify that all ESM LRUs are green, with the exception of CommBCU. You should also choose the required PFM and Strategy, observe ESM LOBs of opportunity, and finally set ESM to OPERATIONAL mode.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "ESM Electronic Surveillance Measures",
+            "1. Open EOWS, verify ESM state is INIT\n2. Operate ESMP\na. Wait until ESM set to STBY mode\nb. On EOWS, on ESMP Monitoring tab, verify all ESM LRUs are green (except CommBCU).\n3. Choose the required PFM\n4. Choose the required Strategy\n5. Observe ESM LOBs of opportunity\n6. Set ESM to OPERATIONAL mode"
+        ]
+    },
+    {
+        "query": "What is the procedure for performing a Technical Pre-Flight, and what is the caution regarding electromagnetic radiation prior to transmitting on the ground?",
+        "answer": "The Technical Pre-Flight procedure involves ensuring the AMS logbook has no overdue waivers and that there are no expired AMS carry-overs in the A/C logbook. It also requires performing an external and internal visual inspection of the AMS to ensure all elements are harmless and complete, proper installation of panels, bolts, units, cables, and consoles, and the absence of LCS leakage from visible pipes. Additionally, checking for Foreign Object Debris (FOD) like tools or materials is crucial. A critical caution states that prior to transmitting on the ground, safety pre-conditions and distances for electromagnetic radiation must be met.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "Technical Pre-Flight Procedure\n1. Ensure AMS logbook has no overdue waivers\n2. Ensure there are no expired AMS carry over at the A/C logbook\n3. Perform AMS external and internal visual inspection\na. Ensure harmless and completeness of all AMS elements\nb. Ensure proper AMS installation - Panels, Bolts, Units, Cables, Consoles etc.\nc. Ensure absence of LCS leakage from visible LCS pipes connectors\n4. Check for absence of Foreign Object Debris (FOD) as tools or materials",
+            "CAUTION: Prior to transmitting on the ground, meet the safety pre- conditions and distances for electromagnetic radiation"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Line Replaceable Unit (LRU), and what troubleshooting action should be taken if an ESM LRU is not green on the ESMP Monitoring tab?",
+        "answer": "The abbreviation for Line Replaceable Unit is LRU. If an ESM LRU is not green on the ESMP Monitoring tab, and the problem doesn't recover automatically after 10 seconds, the troubleshooting action is to reset the MRX via SyMon.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "LRU Line Replaceable Unit",
+            "ESM MRX is RED If problem doesn't recover automatically after 10 seconds, reset MRX via SyMon"
+        ]
+    },
+    {
+        "query": "What is the purpose of the 'Power ON-OFF' application during AMS power-up, and what troubleshooting step should be taken if the 'Power ON-OFF' script gets stuck at the VM center problem for more than 20 minutes?",
+        "answer": "During AMS power-up, the 'Power ON-OFF' application initiates a script that runs to power on the system. This script can take up to 20 minutes to complete. If the 'Power ON-OFF' script gets stuck at the VM center problem (specifically at the VSAN step) for more than 20 minutes, the troubleshooting step is to open c:\\SM, right-click on \"poweron_novsan\", and select \"Run with powershell\". Additionally, the technical team should be informed.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "9. Open \"Power ON-OFF\" application, and press \"Power ON\"\nNOTE: Power on script window will appear and a script should be running. It could run up to 20 minutes",
+            "Mission Startup \"Power ON-OFF\" script stuck at VM center problem At c:\\SM right click \"poweron_novsan\" VSAN step more and select \"Run than 20 min. with powershell\" Inform technical team"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Global Positioning System (GPS), and what is the procedure for performing an In Flight Alignment (IFA) for the navigation system?",
+        "answer": "The abbreviation for Global Positioning System is GPS. To perform an In Flight Alignment (IFA), first verify that all Navigation components are powered ON in the SyMon power tree. Then, in the SyMon functional tree, navigate to the Navigation section, open the Navigation, INS_GPS, and MACC information sections, and verify that the GPS FOM value is less than 50. Select the Inflight Alignment option (Globe icon) at the INS_GPS line, and verify that the MACC State and Navigation State change to \"Inflight Alignment\". Pilots should then perform manufacturer maneuvering recommendations, starting with straight and level flight until INS Heading Valid, followed by a series of 90° to 180° turns. Finally, verify that the INS State is set to \"Navigate\". The IFA process should take up to 15 minutes.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "GPS Global Positioning System",
+            "IFA (In Flight Alignment) Procedure\n1. On SyMon power tree, verify that all Navigation components are powered ON\n2. On SyMon functional tree, Navigation section\na. Open the Navigation, INS_GPS and MACC information sections (i icons)\nb. At Navigation section, verify that GPS FOM value is less than 50\nc. At INS_GPS line, select Inflight Alignment option (Globe icon)\n3. Verify that MACC State and Navigation State changed to: Inflight Alignment\n4. Ask pilots to perform manufacturer maneuvering recommendation:\n\"It is recommended that IFA be initially commanded during straight and level flight. Follow with straight and level flight until INS Heading Valid, and then a series of 90° to 180° turns (each pair of turns separated by one to two minutes of straight/level flight)\"\n5. Verify that INS State (at INS_GPS information) is set to \"Navigate\"\nNote: The IFA process should take up to 15 minutes. Counter is displayed at the MACC Init State field"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Removable Media (RM), and what troubleshooting steps should be taken if the U: partition is not recognized or accessible on an OWS?",
+        "answer": "The abbreviation for Removable Media is RM. If the U: partition is not recognized or accessible on an OWS (e.g., has an X sign on the partition icon), it might be due to the OWS being uploaded and signed-in before the UTS finished its upload. To troubleshoot this, you can either sign out from the OWS and sign in again, or open the CMD application and run the command \"gpupdate\".",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "RM Removable Media",
+            "Removable Media U: partition not OWS uploaded Do one of the following:\n(RM) recognized (has an and signed-in • Sign-Out from the OWS and sign-in\nX sign on the before UTS • Open CMD application and run the command \"gpupdate\"\npartition icon) done upload"
+        ]
+    },
+    {
+        "query": "What are the requirements for MS, RDR, and ELINT systems regarding LCS cooling, and what is the procedure for operating MS Racks Cooling in LCS Mode?",
+        "answer": "MS, RDR, and ELINT systems must use LCS cooling, and the relevant LCS pump must be operating before powering up these systems. LCS temperature must also be monitored routinely. To operate MS Racks Cooling in LCS Mode, first verify that LCS AVAIL is illuminated in the MS RACKS section of the control panel. Then, ensure LCS is illuminated (by pressing and holding the LCS switch for approximately 1 second) and ECS is not illuminated (by pressing and holding the ECS switch for approximately 1 second). Gaspers in the operator's area can be opened if needed, and you should verify no faults are illuminated on the LCS control panel. It is cautioned not to turn on LCS pumps on the ground without the ground cooling cart attached, as the fluid will heat up significantly.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "1. MS, RDR and ELINT systems must use LCS cooling\na. Relevant LCS pump must be operate before power up those systems\n2. LCS temperature must be monitored routinely",
+            "1. In the MS RACKS section of the control panel: Verify LCS AVAIL is illuminated\n2. In the MS RACKS section of the LCS control panel: Ensure LCS is illuminated (To turn it ON, press and hold the LCS switch for approximately 1 second)\n3. Ensure ECS is not illuminated in the MS RACKS. (To turn it OFF, press and hold the ECS switch for approximately 1 second and verify the ON indication extinguishes)\n4. Gaspers in operator's area can be opened (if needed)\n5. Verify no faults are illuminated on LCS control panel."
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Airborne Mission Segment (AMS), and what is the procedure for an Emergency System Shutdown?",
+        "answer": "The abbreviation for Airborne Mission Segment is AMS. In an emergency situation requiring immediate AMS power shutdown, the procedure is to first press the EMERG DISC button on the MCP (or the MS EMER DISC button in the cockpit overhead panel). Then, on the MCP, depress the R123-A, R123-B, R4, R6-R7-A, R7-B, C1-A, C1-B, C1-C, C2-A, C2-B, C2-C, MS PWR, EXT PWR, and A/C PWR switches. In the cockpit, on the Flight Deck Overhead panel at the MASTERS section, depress the CABIN, GALLEY, MS POWER, MS L GEN, and MS R GEN switches. All AMS switches should then be set to their primary states as referenced in the 'Before Power up' table, and finally, the EMERG DISC (or cockpit MS EMER DISC) button should be depressed.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "AMS Airborne Mission Segment",
+            "Emergency System Shutdown\n1. On MCP, press EMERG DISC button\n2. On MCP (OWS#3) depress:\na. R123-A, R123-B, R4, R6-R7-A, R7-B\nb. C1-A, C1-B, C1-C\nc. C2-A, C2-B, C2-C\nd. MS PWR\ne. EXT PWR\nf. A/C PWR\n3. At cockpit, on the Flight Deck Overhead panel at MASTERS section, depress:\na. CABIN\nb. GALLEY\nc. MS POWER\nd. MS L GEN\ne. MS R GEN\n5. Set all AMS switches to their primary states, refer to the switches state table, Before Power up (NP-2)\n6. Depress EMERG DISC (or cockpit MS EMER DISC) button"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Global Positioning System (GPS), and what troubleshooting steps should be taken if the TSU display shows 'TIME: HOLD OVER' and '1PPS: HOLD OVER' for more than 5 minutes after power-up?",
+        "answer": "The abbreviation for Global Positioning System is GPS. If the TSU display shows 'TIME: HOLD OVER' and '1PPS: HOLD OVER' for more than 5 minutes after TSU power-up, you should first try resetting the TSU via SyMon. Alternatively, on the TSU front panel, press and hold the MENU button for more than 2 seconds, then press the '↑' button to change the value to 76 and press ENTER. Move the cursor to '15. RESET GPS' and press ENTER, then press the '→' button (yes) and ENTER. After this, wait up to 13 minutes for the TSU display to show 'TIME: GPS XX SV' and '1PPS: GPS' (for TSU-Front) or '1PPS: AUTO' (for TSU-Aft).",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "GPS Global Positioning System",
+            "TSU TSU Display shows 'TIME: HOLD OVER' '1PPS: HOLD OVER' more than 5 minutes after TSU power-up Via SyMon, Reset TSU. Or,\n1. On the TSU front panel: Press and hold the MENU button more than 2 seconds\n2. Press on '↑' button to change the value to 76 and press ENTER\n3. Press on '←' button to move the cursor to '15. RESET GPS' and press ENTER\n4. Press on '→' button (yes) and then press ENTER\n5. Wait up to 13 minutes for the TSU display to show: • TIME: GPS XX SV' • TSU-Front: '1PPS: GPS' • TSU-Aft: '1PPS: AUTO"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Electronic Intelligence (ELINT), and what are the cooling limitations and associated caution for operating the ELINT system?",
+        "answer": "The abbreviation for Electronic Intelligence is ELINT. The ELINT system must use LCS cooling, and the relevant LCS pump must be operating before powering it up. LCS temperature must be monitored routinely. A caution states that operating the ELINT system without proper cooling can cause hardware damage to the unit, emphasizing the need to verify proper LCS cooling (LCS pumps operate) is available for both loops.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "ELINT Electronic Intelligence",
+            "1. MS, RDR and ELINT systems must use LCS cooling\na. Relevant LCS pump must be operate before power up those systems\n2. LCS temperature must be monitored routinely",
+            "CAUTION: Operating ELINT system without proper cooling can cause hardware damage for unit - verify proper LCS cooling (LCS pumps operate) is available for both loops."
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Communication Intelligence (COMINT), and what are the system limitations for COMINT during a mission to avoid radio interference?",
+        "answer": "The abbreviation for Communication Intelligence is COMINT. To avoid radio interference during a COMINT mission, all E-RADIO radios should not be set to E-RADIO mode (only single mode is allowed), and all on-board radio transmissions (UHF, VHF, HF) must be coordinated with COMINT operators.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "COMINT Communication Intelligence",
+            "3. COMINT System limitations\nIn order to avoid Radio interference, during a COMINT mission\n(1) All E-RADIO radios should not set to E-RADIO mode (only single mode is allowed),\n(2) All on board radios transmissions (UHF, VHF, HF) must be coordinated with COMINT operators"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Mission Control Panel (MCP), and what specific MCP switches need to be depressed during the 'After Landing' procedure?",
+        "answer": "The abbreviation for Mission Control Panel is MCP. During the 'After Landing' procedure, the following MCP switches need to be depressed: R123-A, R123-B, R4, R6-R7-A, R7-B, MS PWR, EXT PWR, and A/C PWR.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "MCP Mission Control Panel",
+            "8. On MCP (OWS#3) depress:\na. R123-A, R123-B, R4, R6-R7-A, R7-B\nb. MS PWR\nc. EXT PWR\nd. A/C PWR"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Radar Control Unit (RCU), and what troubleshooting steps should be taken if the RDR system fails on calibration, shows STBY level current during transmission, and receives a 'Black' picture in IVA?",
+        "answer": "The abbreviation for Radar Control Unit is RCU. If the RDR system concurrently fails on calibration, shows STBY level current while transmitting, and receives a 'Black' picture in IVA, it indicates problems with IOBC discrete preventing the RCU from transmitting. The troubleshooting steps are to first power OFF and then power ON the IOBC via the SyMon power tree (Mission map - Avionics tree). After that, perform the RDR - Restart Procedure.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "RCU Radar Control Unit",
+            "RDR The following Problems occurred in concurrent: IOBC discrete prevent RCU to transmit\n1. Radar Fails on calibration\n2. Observed current while transmitting is at STBY level\n3. Received \"Black\" picture in IVA\n1. Via SyMon power tree, Mission map - Avionics tree, Power OFF and Power ON the IOBC\n2. Perform RDR - Restart Procedure"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Input / Output Blanking Centre (IOBC), and what is the procedure for enabling and disabling RDR Tx switches on Rack #6 IOBC for weather radar operation during taxi?",
+        "answer": "The abbreviation for Input / Output Blanking Centre is IOBC. For weather radar operation during taxi, the procedure involves first setting the two (2) RDR Tx switches on Rack #6 IOBC to ENABLE. After the weather RDR operation is complete, these two (2) RDR Tx switches on Rack #6 IOBC should be set back to DISABLE.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "IOBC Input Output Blanking Centre",
+            "If Weather RDR is needed for takeoff, during taxi\nc. On Rack #6 IOBC, set two (2) RDR Tx switches to ENABLE\ne. On Rack #6 IOBC, set two (2) RDR Tx switches to DISABLE"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Electronic Optical / Infra-Red (EO/IR), and what is the system limitation for EO/IR during taxi, takeoff, and landing?",
+        "answer": "The abbreviation for Electronic Optical / Infra-Red is EO/IR. The system limitation for EO/IR is that it must be powered on, in STOW mode, during taxi, takeoff, and landing.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "EO/IR Electro Optical / Infra-Red",
+            "2. EOIR System limitation\na. EOIR must be powered on, on STOW mode, during taxi, takeoff and landing"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Multi-Sensor Display and Control (MSDC), and what is the PDCS system limitation regarding AIS targets?",
+        "answer": "The abbreviation for Multi-Sensor Display and Control is MSDC. The PDCS system limitation states that in order to display AIS targets, the MSDC application must be opened on some OWS, as a Master user.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "MSDC Multi-Sensor Display and Control",
+            "4. PDCS System limitations\na. In order to display AIS targets, MSDC application must be opened on some OWS, as Master user"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Operator Workstation (OWS), and what is the procedure for shutting down the current OWS computer used for the shutdown process after landing?",
+        "answer": "The abbreviation for Operator Workstation is OWS. After landing, once the 'Power OFF' command has been activated and the 'Pinger' button pressed (waiting until all LEDs have turned red except the current OWS, DCS1, DCS2, DCS3), the procedure for shutting down the current OWS computer used for the shutdown process is simply to shut down that computer.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "OWS Operator Workstation",
+            "4. Shutdown the current OWS computer that used for the shutdown process"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Power Distribution Box (PDB), and what troubleshooting steps should be taken if there is no green indication on PDB status or at least one of the PDB 270VDC input indications is red?",
+        "answer": "The abbreviation for Power Distribution Box is PDB. If there is no green indication on the PDB status or at least one of the PDB 270VDC input indications is red, it suggests a communication problem. The troubleshooting steps are to first turn OFF the RDR PDB inputs on the MCP panel (C1-A, C1-B, C1-C, C2-A, C2-B, C2-C), wait 30 seconds, and then turn ON the RDR PDB inputs on the same MCP panel switches.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "PDB Power Distribution Box",
+            "PDB 1. There is no PDB Communication Turn OFF RDR PDB inputs\ngreen indication problem On MCP panel\non PDB status C1-A, C1-B, C1-C\n2. At list one of PDB C2-A, C2-B, C2-C\n270VDC input Wait 30 seconds\nindication is red Turn ON RDR PDB inputs\nOn MCP panel\nC1-A, C1-B, C1-C\nC2-A, C2-B, C2-C"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Built-in Test (BIT), and what is the procedure for performing an IBIT on the RDR system?",
+        "answer": "The abbreviation for Built-in Test is BIT. To perform an IBIT on the RDR system, first, on the MSDC Master user, click the \"setting\" button, then the maintenance button to open the IBIT window. Click the IBIT button, and verify that the IBIT timer starts and the radar state changes to \"IBIT\" mode. On the CTS main window, verify that all processes are accomplished for relevant antennas and that a \"PASS\" status is shown for all CAL/VER tests. Once finished, a \"completed\" message should appear on the IBIT window (disregarding any fail reported on MSDC). Close the IBIT window, verify the radar state changes back to \"STBY\" mode, and then click the AG and RTX buttons.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "BIT Built-in Test",
+            "RDR - IBIT Procedure\n1. On MSDC Master user:\na. Click the \"setting\" button\nb. Click on maintenance button - the IBIT window will be open\nc. Click on IBIT button\nd. Verify IBIT timer starts on IBIT window\ne. Verify radar state changed to \"IBIT\" mode\nf. ON CTS main window\n(1) Verify that all processes are accomplished for all relevant antennas\n(2) Verify PASS status for all CAL/VER tests for relevant antennas\ng. When finished - \"completed\" message should appear on the IBIT window (disregard the fail reported on MSDC)\nh. Close the IBIT window\ni. Verify radar state changed back to \"STBY\" mode\nj. Click on AG button\nk. Click on RTX button"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Ground Support Equipment (GSE), and what is the caution regarding working out of power limitations (current or voltage)?",
+        "answer": "The abbreviation for Ground Support Equipment is GSE. A caution states that working out of power limitations (current or voltage) is prohibited.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "GSE Ground Support Equipment",
+            "CAUTION: Working out of power limitations (current or voltage) is prohibited."
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Multi-Mission Suite (AMS), and what is the general troubleshooting procedure if a problem persists after resetting the relevant system application and computer/VM server?",
+        "answer": "The abbreviation for Multi-Mission Suite is AMS. If a problem persists after resetting the relevant system application and computer/VM server, the general troubleshooting procedure is to first reset the relevant system hardware (HW). If the problem still persists, reset all VM servers by selecting the \"Power OFF VMs only\" option in the \"Power ON-OFF\" application, then power up the mission systems according to the power-up procedure. If the problem continues, a full AMS system reset (new start from \"Black Mission\" state) should be performed, which involves shutting off and then powering up the AMS, followed by performing an In Flight Alignment (IFA).",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "NOTICE: This Multi-mission Suite Handbook has been evaluated by Mission Operations for use of Multi-mission Suite Aircraft.",
+            "If problem persists:\na. Reset the relevant system HW\nIf problem persists:\na. Reset all VM servers: Via \"Power ON-OFF\" application, select the \"Power OFF VMs only\" option\nb. Power up the mission systems according to the power up procedure\nIf problem persists:\na. Reset the whole AMS system (new start from \"Black Mission\" state)\n(1) Shutoff the AMS, refer to Normal Procedures – \"RTB\" and \"After Landing\" sections\n(2) Powerup the AMS, refer to Normal Procedures – \"Mission Systems Power Up\" and \"After Takeoff\" sections\nb. After AMS Powerup was finished, perform IFA, refer to IFA (In Flight Alignment) Procedure (SO-17)"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Liquid Cooling System (LCS), and what is the procedure for downloading data from the LCS Controller?",
+        "answer": "The abbreviation for Liquid Cooling System is LCS. To download data from the LCS Controller, first verify that the LCS system is powered ON. Then, open the USB cover on the LCS Controller and plug in a DOK/USB; the left indication light will turn ORANGE. After a few minutes, the indication light will flash and then turn off. Once the light turns off, perform the Liquid Cooling System (LCS) - Turn Off Procedure (SO-22).",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "LCS Liquid Cooling System",
+            "Liquid Cooling System (LCS) - Data Download Procedure\n1. Verify LCS system is powered ON\n2. Open USB cover on LCS Controller, and plug in a DOK\\USB. Left Indication light will turn on ORANGE\n3. After a few minutes, Indication light flashes and then turnoff\n4. When light turns off, perform Liquid Cooling System (LCS) - Turn Off Procedure (SO-22)"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Communication Control Computer (CCC), and what troubleshooting steps should be taken if the SATCOM Modem Lock is RED and the Antenna On Target is RED, but the 'Ins Receive Msg' checkbox is empty?",
+        "answer": "The abbreviation for Communication Control Computer is CCC. If the SATCOM Modem Lock is RED and the Antenna On Target is RED, and the 'Ins Receive Msg' checkbox is empty, it indicates a navigation data problem. The troubleshooting action is to refer to the MISSION Navigation Troubleshooting section (TS-7).",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "CCC Communication Control Computer",
+            "SATCOM Modem Lock is Refer to MISSION Navigation\nRED Troubleshooting (TS-7)\nAntenna On Target is RED\nIns Receive Msg checkbox is empty"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Digital Audio Control Panel (DACP), and what should be verified on all DACPs during the mission systems power-up sequence?",
+        "answer": "The abbreviation for Digital Audio Control Panel is DACP. During the mission systems power-up sequence, on all DACPs, it should be verified that all datalink channels (LOS1-4, SAT1-2) are off.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "DACP Digital Audio Control Panel",
+            "8. On all DACPs, verify that all datalink channels (LOS1-4, SAT1- 2) are off"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Mission Parameters Data (MPD), and what is the initial step for mission planning before flight?",
+        "answer": "The abbreviation for Mission Parameters Data is MPD. The initial step for mission planning before flight is to prepare the MPD and save it on the removable media, then check the removable media for free space availability.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "MPD Mission Parameters Data",
+            "1. Mission Planning at MSS\na. Prepare MPD and save it on the removable media\nb. Check the removable media free space availability"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Electronic Surveillance Measures Processor (ESMP), and what troubleshooting step should be taken if ESM is stuck on INIT mode for more than 5 minutes after ESM processes are running?",
+        "answer": "The abbreviation for Electronic Surveillance Measures Processor is ESMP. If ESM is stuck on INIT mode for more than 5 minutes after ESM processes are running, the troubleshooting steps are to first reset the ESMP via SyMon. Then, wait 3 minutes and verify that the message “ESMP connection was re-established” is displayed in the system messages section of the OWSE window.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "ESMP ESM Processor",
+            "ESM ESM is stuck on INIT mode, more than 5 minutes after ESM processes are running 1. Via SyMon, reset ESMP\n2. Wait 3 minutes and verify on OWSE window, system messages section, “ESMP connection was re-established” message is displayed"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Global Positioning System (GPS), and what should be verified regarding GPS source and Hybrid FOM value in SyMon during AMS power-up?",
+        "answer": "The abbreviation for Global Positioning System is GPS. During AMS power-up, when opening SyMon, you should select the NAVIGATION system and press its information icon. Here, verify that the \"Active antenna\" field (GPS source) is as required (ADA or Mission, as selected at the GPS Source switch). If not, change the source at the INS_GPS line (NAVIGATION structure tree) using the globe icon. Additionally, verify that the Hybrid FOM value is 26 and that the NAV data is correct.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "GPS Global Positioning System",
+            "15. At OWS, open SyMon\na. Select NAVIGATION system, on its structure tree section press the NAVIGATION information ⓘ icon\n(1) Verify that \"Active antenna\" field (GPS source) is as required (ADA or Mission, as selected at GPS Source switch). If not, change the source:\n(a) At INS_GPS line (NAVIGATION structure tree) - globe icon, set the source as required (Immune/not immune option)\n(b) Ensure the \"Active antenna\" state has changed\n(2) Verify that Hybrid FOM value is 26 and the NAV data is correct"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Input / Output (I/O), and what troubleshooting step should be taken if the INTERCOM voice on headphones sounds vague?",
+        "answer": "The abbreviation for Input / Output is I/O. If the INTERCOM voice on headphones sounds vague, the troubleshooting steps are to first check that the headphone connectors are inserted well into the Jack Panel. Then, on the Jack Panel, check that the HDPN/SPKR knob is set to HDPN.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "I/O Input / Output",
+            "INTERCOM ICS Voice on headphones sounds vague 1. Check that headphone connectors inserted well to the Jack Panel\n2. On Jack Panel, check HDPN/SPKR knob set to HDPN"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Line of Sight (LOS) datalink system, and what is the caution regarding LOS transmission on the ground?",
+        "answer": "The abbreviation for Line of Sight datalink system is LOS. A caution states that it is forbidden to transmit LOS on the ground without direct external cooling to its amplifier in the boiler room.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "LOS Line of Sight datalink system",
+            "CAUTION: It is forbidden to transmit SATCOM or LOS on the ground, without direct external cooling to their amplifier in the boiler room"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Mission Technical Server (MTS), and what troubleshooting step should be taken if PDCS only shows incorrect navigation data while SyMon data is correct?",
+        "answer": "The abbreviation for Mission Technical Server is MTS. If PDCS only shows incorrect navigation data while SyMon data is correct, it indicates a NAV dissemination problem. The troubleshooting step is to open VM Center and restart the MSN-MTS VM.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "MTS Mission Technical Server",
+            "Mission On PDCS only, NAV Open VM Center and\nincorrect navigation dissemination restart MSN-MTS VM\ndata (SyMon data problem\nis correct)"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Power Distribution Unit (PDU), and what troubleshooting step should be taken if network communication to DCS1 or DCS2 is problematic (red X on network card icon or red in Pinger application)?",
+        "answer": "The abbreviation for Power Distribution Unit is PDU. If network communication to DCS1 or DCS2 is problematic (indicated by a red X on the network card icon or red in the \"Pinger\" application), and if the DCSs are not working, the troubleshooting step is to restart PDU6 with the \"PDU#6 control\" switch. After restarting, wait 6 minutes and power up the OWS again. If the problem persists, call the technician team.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "PDU Power Distribution Unit",
+            "Mission Network At Mission Power Communication up process, OWS problem to not connect to the DCS1 or DCS2 network (red X on network card icon) Or, On the \"Pinger\" application, DCS1 or DCS2 is red If some DCS is not working, restart PDU6 with \"PDU#6 control\" switch Wait 6 minutes and powerup OWS again If the problem persist, call technician team"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Radar Signal Processing (RSP), and what is the procedure for restarting the PSP (Radar Signal Processing) application?",
+        "answer": "The abbreviation for Radar Signal Processing is RSP. To restart the PSP application, first, on the PSP Launcher application, press the \"Stop All\" icon and wait until all RSPs processes have stopped. Then, close the PSP Launcher. After that, start PSP as described in the \"RDR - Power up Procedure\" and start RPP as described in the \"RDR - RPP Restart Procedure.\"",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "RSP Radar Signal Processing",
+            "RDR - PSP Restart Procedure\n1. On PSP Launcher application, press the \"Stop All\" icon\n2. Wait until all RSPs processes stopped\n3. Close PSP Launcher\n4. Start PSP as described at the \"RDR - Power up Procedure\"\n5. Start RPP as described at the \"RDR - RPP Restart Procedure\""
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Recording Review System (RRS), and what troubleshooting steps should be taken if RRS is not recording at all and its icon on the taskbar is surrounded by a red frame?",
+        "answer": "The abbreviation for Recording Review System is RRS. If RRS is not recording at all and its icon on the taskbar is surrounded by a red frame, indicating a full disk problem on the RRS Server, the troubleshooting steps are to first check the RRS status window to see if the disk is full. If it is, delete old MRDs and then start recording. If the problem persists, restart the RRS VM server.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "RRS Recording Review System",
+            "RRS RRS is not Full disk 1. On RRS status window, check if the disk is full. If so, delete MRDs\nrecording at all. The RRS icon on the taskbar is surrounded by a RRS Server 2. Start recording\nred frame problem Restart RRS VM server."
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Synthetic Aperture Radar (SAR), and what are the typical current values for the 270VDC generators during SAR Tx mode?",
+        "answer": "The abbreviation for Synthetic Aperture Radar is SAR. During SAR Tx mode, the typical current values for the left 270VDC generator are 44-50A, and for the right 270VDC generator, they are 50-54A, with a fluctuation of ±5A.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "SAR Synthetic Aperture Radar",
+            "Typical current values for left and right 270VDC generators:\nAMS SAR Tx 44-50 50-54 5"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Satellite Communication (SATCOM), and what is the caution regarding SATCOM system operation during takeoff and landing?",
+        "answer": "The abbreviation for Satellite Communication is SATCOM. A caution states that the SATCOM system must be powered on during takeoff and landing.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "SAT/SATCOM Satellite Communication",
+            "CAUTION: SATCOM system must be powered on during takeoff and landing"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Signal Intelligence (SIGINT), and what is the function of the SIG-DB server?",
+        "answer": "The abbreviation for Signal Intelligence is SIGINT. The SIG-DB server contains the ELINT & COMINT DB, affecting the functionality of both ELINT and COMINT databases.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "SIGINT Signal Intelligence",
+            "System ELINT (+COMIN T) Server SIG-DB Contains ELINT & COMINT DB Functionality affected ELINT DB COMINT DB"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for System Monitoring (SYMON), and what should be verified in SyMon regarding the MISSION system's AVIONIC information during AMS power-up?",
+        "answer": "The abbreviation for System Monitoring is SYMON. During AMS power-up, after opening SyMon, you should select the MISSION system and press its AVIONIC information icon. Here, verify that the following states are OFF: RDR SOT #1, RDR SOT #2, and Weather SOT.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "SYMON System Monitoring",
+            "15. At OWS, open SyMon\nb. Select MISSION system. On its structure tree section press AVIONIC information ⓘ icon. Verify that the following states are OFF:\n(a) RDR SOT #1\n(b) RDR SOT #2\n(c) Weather SOT"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Time Source Unit (TSU), and what should be verified on the TSU Front and TSU Aft front panels during AMS power-up?",
+        "answer": "The abbreviation for Time Source Unit is TSU. During AMS power-up, on the TSU Front and TSU Aft front panels, you should verify that four (4) green LEDs are illuminated, and that the correct date & time and at least four (4) satellites are displayed.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "TSU Time Source Unit",
+            "10. At TSU Front and TSU Aft front panels\na. Verify four (4) green LEDs are illuminated\nb. Verify correct date & time and at least four (4) satellites"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Ultra-High Frequency (UHF), and what is the troubleshooting procedure if the UHF Radio does not transmit?",
+        "answer": "The abbreviation for Ultra-High Frequency is UHF. If the UHF Radio does not transmit, it might be because the radio is shut off in E-RADIO mode. The troubleshooting steps are to first change the Radio to Single mode, then power off the URC or switch the relevant VCU knob to off, and finally, power on the Radio.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "UHF Ultra-High Frequency",
+            "RADIO UHF Radio not transmit Radio shut off in E-RADIO mode 1. Change Radio to Single mode\n2. Power off the URC, or switch the relevant VCU knob to off\n3. Power on the Radio"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Very High Frequency (VHF), and what is the sanity check for the Radio System?",
+        "answer": "The abbreviation for Very High Frequency is VHF. The sanity check for the Radio System involves making radio communication checks (UHF, VHF) with the control tower or another available station, on all relevant modes (AM, FM, Immune, etc.).",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "VHF Very High Frequency",
+            "Radio System Sanity\n1. Make radios communication checks (UHF, VHF) with the control tower or other available station, on all relevant modes (AM, FM, Immune etc.)"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Weight on Wheels (WOW), and what is the purpose of the 'Record of Revisions' section in the handbook?",
+        "answer": "The abbreviation for Weight on Wheels is WOW. The 'Record of Revisions' section in the handbook provides a historical log of revisions, including the revision number, date, and the person who inserted the revision, ensuring traceability of changes to the document.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "WOW Weight on Wheels",
+            "Record of Revisions\nRevision Dated Inserted No. By Basic Issue July 2022 Draft December 2022 Asher H 0 March 2024 Asher H 1 December 2024 Asher H Date Revision No. Basic Issue 7/12/2022 Draft 18/3/2024 - 01/12/2024 -"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Airborne Mission Segment (AMS), and what is the caution regarding power ON/OFF timing for any power switch?",
+        "answer": "The abbreviation for Airborne Mission Segment is AMS. A caution states that after powering OFF any power switch, it is essential to wait at least 10 seconds before powering it ON again, as powering ON too soon can cause a serious system fault.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "AMS Airborne Mission Segment",
+            "CAUTION: Power ON too soon, can cause a serious system fault.\nAfter power OFF any power switch, it is essential to wait at least 10 seconds before power it ON again"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Crew Alerting System (CAS), and what is the note regarding ECS usage above 18 Kft?",
+        "answer": "The abbreviation for Crew Alerting System is CAS. A note states that ECS can be used up to 18 Kft, but operating ECS above 18 Kft will initiate a cockpit CAS message.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "CAS Crew Alerting System",
+            "NOTE: ECS can be used up to 18 Kft. Operate ECS above 18 Kft will initiate a cockpit CAS massage"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Circuit Breaker (CB), and what is the caution regarding using circuit breakers as on/off switches?",
+        "answer": "The abbreviation for Circuit Breaker is CB. A caution states that circuit breakers should not be used as on/off switches, as failure to comply may result in damage to electrical equipment.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "CB Circuit Breaker",
+            "CAUTION: Do not use the circuit breakers as on/off switches. Failure to comply may result in damage to electrical equipment"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Clock Distribution Unit (CLDU), and what troubleshooting step should be taken if the 1PPS/HQ/10MHz lamp on CLDU is red?",
+        "answer": "The abbreviation for Clock Distribution Unit is CLDU. If the 1PPS/HQ/10MHz lamp on CLDU is red, the troubleshooting step is to reset the CLDU and TSU via SyMon.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "CLDU Clock Distribution Unit",
+            "TSU 1PPS/HQ/10MHz lamp on CLDU are red Via SyMon, reset CLDU and TSU"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Data Link (DL), and what is the procedure for checking datalink channels on all DACPs before landing?",
+        "answer": "The abbreviation for Data Link is DL. Before landing, on all DACPs, it should be verified that all datalink channels (LOS1-4, SAT1-2) are off.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "DL Data Link",
+            "7. On all DACPs, verify that all datalink channels (LOS1-4, SAT1-2) are off"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Digital Spatial ELINT (DSE), and what is the function of the DSE-SP server?",
+        "answer": "The abbreviation for Digital Spatial ELINT is DSE. The DSE-SP server contains ELINT apps and ELINT DSRP files, affecting the functionality of ELINT applications and ELINT DSRP files.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "DSE Digital Spatial ELINT",
+            "System ELINT (+COMIN T) Server DSE-SP Contains ELINT apps ELINT DSRP files Functionality affected ELINT PROXY ELINT HOST"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Environment Cooling System (ECS), and what is the procedure for turning off the ECS in the MS RACKS section of the LCS control panel?",
+        "answer": "The abbreviation for Environment Cooling System is ECS. To turn off the ECS in the MS RACKS section of the LCS control panel, you need to press and hold the ECS switch for approximately 1 second and verify that the ON indication extinguishes.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "ECS Environment Cooling System",
+            "3. In the MS RACKS section of the LCS control panel: Ensure LCS is not illuminated (To turn OFF press and hold the LCS switch for approximately 1 second). Verify no faults are illuminated on LCS Control Panel."
+        ]
+    },
+    {
+        "query": "What is the abbreviation for External Interface Server (EIS), and what troubleshooting steps should be taken if the EIS process cannot be activated in IVA and the process doesn't load at the IES-APP server?",
+        "answer": "The abbreviation for External Interface Server is EIS. If the EIS process cannot be activated in IVA and the process doesn't load at the IES-APP server (while APM & FEP processes are working well), indicating a Windows Performance Counters error, the troubleshooting steps are to first stop the APM process in the IVA processes window. Then, remote desktop to the IES-APP server, stop the Apm.Remote service, and manually open Apm.Remote to check for error exceptions. Close all instances of Apm.Remote, open CMD as administrator, run the command \"lodctr /r\", start the Apm.Remote service, verify the EIS process is running, and finally, activate EIS on IVA.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "EIS External Interface Server",
+            "IES EIS process Windows cannot be activate Performance in IVA, and the Counters error. process doesn't Need to reset load at IES-APP these counters. server. (APM & FEP processes are working well) 1. At IVA processes window, stop APM process.\n2. Remote desktop to IES-APP server\n3. Stop Apm.Remote service.\n4. Open manually the Apm.Remote, verify if there are error exceptions on screen.\n5. Close all instances of Apm.remote.\n6. Open CMD as administrator.\n7. Run the command \"lodctr /r\".\n8. Start the Apm.Remote service.\n9. Verify EIS process is running.\n10. Activate EIS on IVA."
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Front End Processor (FEP), and what is the function of the IES FEP server?",
+        "answer": "The abbreviation for Front End Processor is FEP. The IES FEP server is a physical computer that handles products processing (GEO, ACD, ML, ATR) and algorithms for the Image Exploitation System (IES).",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "FEP Front End Processor",
+            "Physical Computers IES FEP Server",
+            "System IES Server IES Contains IES FEP (products processing) (physical) & Algorithms (GEO, ACD, ML, ATR)"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Graphic Information System (GIS), and what troubleshooting step should be taken if no map is displayed on all applications?",
+        "answer": "The abbreviation for Graphic Information System is GIS. If no map is displayed on all applications, it indicates a map server problem. The troubleshooting step is to open VM Center and reboot the MI-GIS VM.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "GIS Graphic Information System",
+            "Mission No map is Map server On VM Center, reboot\nStartup displayed on all problem MI-GIS VM\napplications"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Human Machine Interface (HMI), and what troubleshooting step should be taken if the ELINT HMI does not display 'host_shlc' field?",
+        "answer": "The abbreviation for Human Machine Interface is HMI. If the ELINT HMI does not display the 'host_shlc' field, it indicates no connection to the HOST DB. The troubleshooting steps are to first restart the ELINT HOST process via SyMon. If the problem persists, open Chrome, select VM-Center, right-click on the SIG-DB, SIG-HOST, and DSE-SP VMs, and select \"Reset Guest OS.\"",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "HMI Human Machine Interface",
+            "ELINT HMI On HMI, \"host_shlc\" field is not displayed No connection to the HOST DB 1. Via Symon, restart ELINT process: • HOST If problem persists:\n2. On Chrome, select VM-Center. Right click on the following VMs and select \"Reset Guest OS\": • SIG-DB • SIG-HOST • DSE-SP"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for High Power Amplifier (HPA), and what troubleshooting steps should be taken if there is no data link (Quality=1) and the HPA is RED for SATCOM?",
+        "answer": "The abbreviation for High Power Amplifier is HPA. If there is no data link (Quality=1) and the HPA is RED for SATCOM, the troubleshooting steps are to first set the SATCOM TX State to TX IDLE, then set it to TX STBY or TX OPER on the CCC Control Panel. If the problem persists, set the SATCOM TX State to TX OFF, then set it to TX STBY or TX OPER.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "HPA High Power Amplifier",
+            "SATCOM No data link HPA=RED On CCC Control Panel:\n(Quality =1) Set SATCOM TX State to\nModem Lock & TX IDLE, then set to TX\nAntenna On STBY or TX OPER.\nTarget are GREEN If problem On CCC Control Panel:\npersists: Set SATCOM TX State to TX OFF, then set to TX STBY or TX OPER."
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Internal Communication System (ICS), and what troubleshooting step should be taken if pilots constantly hear the cabin, even though PLT or PVT channels are off?",
+        "answer": "The abbreviation for Internal Communication System is ICS. If pilots constantly hear the cabin, even though PLT or PVT channels are off, the troubleshooting step is to reset the AJB-DAIU and AJB-GW+RB via SyMon, under the Intercom system's Power Tree. Note that all users will be affected during this reset.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "ICS Internal Communication System",
+            "INTERCOM ICS Pilots constantly hear the cabin, even though PLT or PVT channels are off Via SyMon, Intercom system, Power Tree, shut off, then power on • AJB-DAIU • AJB-GW+RB Note: All users will be affected"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Image Exploitation System (IES), and what is the function of the IES-APP server?",
+        "answer": "The abbreviation for Image Exploitation System is IES. The IES-APP server contains the IES APM and EIS, affecting the functionality of the IES APM and EIS.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "IES Image Exploitation System",
+            "System IES Server IES-APP Contains IES APM, EIS Functionality affected IES APM, EIS"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for In Flight Alinement (IFA), and what is the note regarding the duration of the IFA process?",
+        "answer": "The abbreviation for In Flight Alinement is IFA. A note states that the IFA process should take up to 15 minutes, and a counter is displayed in the MACC Init State field.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "IFA In Flight Alinement",
+            "Note: The IFA process should take up to 15 minutes. Counter is displayed at the MACC Init State field"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Inertial Navigation System (INS), and what troubleshooting step should be taken if navigation data is incorrect on the ground in SyMon?",
+        "answer": "The abbreviation for Inertial Navigation System is INS. If navigation data is incorrect on the ground in SyMon, the troubleshooting steps are to first perform a GC Align via SyMon, then wait up to 15 minutes for the navigation data to correct.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "INS Inertial Navigation System",
+            "Mission Navigation On ground, on INS not aligned 1. Via SyMon, perform data Symon, incorrect GC Align navigation data 2. Wait up to 15 min."
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Integrated Viewing Application (IVA), and what troubleshooting step should be taken if no picture or only a partial picture is arriving to IVA?",
+        "answer": "The abbreviation for Integrated Viewing Application is IVA. If no picture or only a partial picture is arriving to IVA, it indicates an RPP/PSP communication problem. The troubleshooting steps are to first check if PSP status is OK in PSP Launcher and act accordingly. If PSP status is OK, then perform the RDR - RPP Restart Procedure.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "IVA Integrated Viewing Application",
+            "RADAR IVA 1. No picture RPP/PSP 1. Check if PSP status is OK in PSP Launcher - act accordingly\narriving to IVA communication\n2. Partial picture problem 2. If PSP status is OK, perform RDR - RPP Restart Procedure\narriving to IVA"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Mission Control Panel (MCP), and what is the procedure for verifying that all 23 switches on the MCP are NOT pressed before power-up?",
+        "answer": "The abbreviation for Mission Control Panel is MCP. Before power-up, on the MCP (OWS#3 ledge), the procedure is to verify by touching that all 23 switches (5+18) are NOT pressed.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "MCP Mission Control Panel",
+            "4. On MCP (OWS#3 ledge), verify by touching, that all 23 switches (5+18) are NOT pressed"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Mission Plan Workstation (MPW), and what PFM should be loaded for IES?",
+        "answer": "The abbreviation for Mission Plan Workstation is MPW. For IES, the MPW mission and reference data PFM should be loaded.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "MPW Mission Plan Workstation",
+            "20. Verify/Load PFM\nd. IES - MPW mission and reference data"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Mission System (MS), and what is the note regarding closing baggage compartment doors for effective operation of MS Racks 1-4 cooling?",
+        "answer": "The abbreviation for Mission System is MS. A note states that for effective operation of MS Racks 1-4 cooling, it is essential that both baggage compartment doors will be closed.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "MS Mission System",
+            "NOTE: For effective operation, it is essential that both baggage compartment doors will be closed"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Navigation Data Distribution (NAV), and what is the function of the NAVY MC4I-NAV agent server?",
+        "answer": "The abbreviation for Navigation Data Distribution is NAV. The NAVY MC4I-NAV agent server contains the Navy Navigation agent, affecting Navigation Data functionality.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "NAV Navigation Data Distribution",
+            "System NAVY Server MC4I-NAV Contains Navy Navigation agent Functionality affected Navigation Data"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Network Communication Computer (NCC), and what troubleshooting step should be taken if SDN has no NAV and TIME data on the NCC application?",
+        "answer": "The abbreviation for Network Communication Computer is NCC. If SDN has no NAV and TIME data on the NCC application, the troubleshooting step is to restart SDN (TSRC) hardware via SyMon.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "NCC Network Communication Computer",
+            "SDN No NAV and TIME Via SyMon, restart SDN (TSRC) data on hardware\nNCC application"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Operator Training System (OTS), and what is the total number of pages in this publication?",
+        "answer": "The abbreviation for Operator Training System is OTS. The total number of pages in this publication is 108.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "OTS Operator Training System",
+            "Total number of pages in this publication is 108, comprising:"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Pilots Display and Control System (PDCS), and what troubleshooting step should be taken if a red alert is displayed on all PDCS clients with the message \"No connection to PDCS server\"?",
+        "answer": "The abbreviation for Pilots Display and Control System is PDCS. If a red alert is displayed on all PDCS clients with the message \"No connection to PDCS server,\" indicating a Datacom problem, the troubleshooting steps are to open a Chrome browser, select VM-Center, right-click on the MSN-PDCS VM, and select \"Reset guest OS.\"",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "PDCS Pilots Display and Control System",
+            "Mission PDCS Red alert is Datacom 1. Open Chrome browser and select VM-Center\ndisplayed on all problem 2. Right click on MSN-\nPDCS clients: \"No PDCS VM and select\nconnection to PDCS \"Reset guest OS\"\nserver\""
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Pre-Flight Message (PFM), and what PFM should be loaded for COMINT?",
+        "answer": "The abbreviation for Pre-Flight Message is PFM. For COMINT, the Scan table PFM should be loaded.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "PFM Pre-Flight Message",
+            "20. Verify/Load PFM\nb. COMINT - Scan table"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Push to Talk (PTT), and what is the procedure for selecting E-RADIO VCUs and PTTs buttons during AMS power-up?",
+        "answer": "The abbreviation for Push to Talk is PTT. During AMS power-up, the procedure is to select all E-RADIO VCUs and PTTs buttons as required (OWS#2,3,4,5,7), including E-RADIO1 (cockpit) and E-RADIO2 (OWS#1) control boxes configuration.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "PTT Push to Talk",
+            "19. Select all E-RADIO VCUs and PTTs buttons as required (OWS#2,3,4,5,7), including E-RADIO1 (cockpit) and E-RADIO2 (OWS#1) control boxes configuration"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Radio Frequencies (RF), and what is the abbreviation for RF Distribution Unit (RFDU)?",
+        "answer": "The abbreviation for Radio Frequencies is RF, and the abbreviation for RF Distribution Unit is RFDU.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "RF Radio Frequencies",
+            "RFDU RF Distribution Unit"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Return to Base (RTB), and what is the note regarding starting 'Before landing' activities?",
+        "answer": "The abbreviation for Return to Base is RTB. A note states that 'Before landing' activities can be started as soon as RTB was called, but excluding 'Power OFF' activation, all activities MUST be completed before landing.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "TRB Return to Base",
+            "NOTE: \"Before landing\" activities can be started as soon as RTB was called.\nExcluding \"Power OFF\" activation, all activities MUST be completed before landing."
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Receiver (Rx), and what is the abbreviation for Transmit (Tx)?",
+        "answer": "The abbreviation for Receiver is Rx, and the abbreviation for Transmit is Tx.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "Rx Receiver",
+            "Tx Transmit"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for SAKNAY Data Network, and what should be verified on the Saknay Box Status section during SDN system sanity checks?",
+        "answer": "The abbreviation for SAKNAY Data Network is SAKNAY. During SDN system sanity checks, on the Saknay Box Status section, it should be verified that all green LEDs are illuminated.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "SAKNAY Data Network",
+            "SDN 6. Verify on Saknay Box Status section, all green LEDs"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for System of Systems (SOS), and what is the abbreviation for Safety of Transmit (SOT)?",
+        "answer": "The abbreviation for System of Systems is SOS, and the abbreviation for Safety of Transmit is SOT.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "SOS System of Systems",
+            "SOT Safety of Transmit"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for To Be Determined (TBD), and what is the abbreviation for Transmit Receive Unit (TRU)?",
+        "answer": "The abbreviation for To Be Determined is TBD, and the abbreviation for Transmit Receive Unit is TRU.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "TBD To Be Determined",
+            "TRU Transmit Receive Unit"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for User Interface (UI), and what is the abbreviation for Universal Serial Bus (USB)?",
+        "answer": "The abbreviation for User Interface is UI, and the abbreviation for Universal Serial Bus is USB.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "UI User Interface",
+            "USB Universal Serial Bus"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Universal Time Coordinated (UTC), and what is the abbreviation for Voice over Internet Protocol (VoIP / VOIP)?",
+        "answer": "The abbreviation for Universal Time Coordinated is UTC, and the abbreviation for Voice over Internet Protocol is VoIP / VOIP.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "UTC Universal Time Coordinated",
+            "VoIP / VOIP Voice over Internet Protocol"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Automatic Dependent Surveillance - Broadcast (ADS-B), and what is the procedure for powering on ADS-B via SyMon?",
+        "answer": "The abbreviation for Automatic Dependent Surveillance - Broadcast is ADS-B. The procedure for powering on ADS-B via SyMon is to select it from the SyMon power tree, as required.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "ADS-B Automatic Dependent Surveillance - Broadcast",
+            "16. The following systems can be powered on, via SyMon power tree, as required\nc. ADSB"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Automatic Identification System (AIS), and what is the procedure for powering on AIS via SyMon?",
+        "answer": "The abbreviation for Automatic Identification System is AIS. The procedure for powering on AIS via SyMon is to select it from the SyMon power tree, as required.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "AIS Automatic Identification System",
+            "16. The following systems can be powered on, via SyMon power tree, as required\nb. AIS"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Aft Equipment Area (AEA), and what is the procedure for closing the AEA door during AMS power-up?",
+        "answer": "The abbreviation for Aft Equipment Area is AEA. During AMS power-up, after the GSE can be disconnected from the aircraft, the procedure is to close the AEA door.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "AEA AFT Equipment Area",
+            "25. Close AEA door"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Airborne Mission Segment (AMS), and what is the procedure for ensuring all loose articles are secured before taxi and takeoff?",
+        "answer": "The abbreviation for Airborne Mission Segment is AMS. Before taxi and takeoff, the procedure for ensuring all loose articles are secured is to verify that they are indeed secured.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "AMS Airborne Mission Segment",
+            "26. Verify that all loose articles are secured"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Built-in Test (BIT), and what should be verified regarding BIT state for the COMINT system during its sanity check?",
+        "answer": "The abbreviation for Built-in Test is BIT. During the COMINT system sanity check, after powering on the COMINT system via SyMon, you should wait for the BIT state to finish and change to SCAN mode, and then verify that MCCS components are green.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "BIT Built-in Test",
+            "COMINT System Sanity\n1. Via SyMon\na. Power on COMINT system\nb. Wait for BIT state to finish and change to SCAN mode\nc. Verify that MCCS components are green"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Communication Intelligence (COMINT), and what is the procedure for powering on COMINT via SyMon?",
+        "answer": "The abbreviation for Communication Intelligence is COMINT. The procedure for powering on COMINT via SyMon is to select it from the SyMon power tree, as required.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "COMINT Communication Intelligence",
+            "16. The following systems can be powered on, via SyMon power tree, as required\na. COMINT"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Communication (COMM), and what is the procedure for setting/checking COMM parameters at CCC?",
+        "answer": "The abbreviation for Communication is COMM. The procedure for setting/checking COMM parameters at CCC involves setting the SAT frequencies, LOS channels and ground station, and E-RADIO channels and frequencies.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "COMM Communication",
+            "21. Set/Check COMM parameters\na. At CCC\n(1) SAT frequencies\n(2) LOS channels and ground station\n(3) E-RADIO channels and frequencies"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Digital Spatial Receiver and Processor (DSRP), and what is the procedure for powering off the DSRP sensor during ELINT system sanity checks?",
+        "answer": "The abbreviation for Digital Spatial Receiver and Processor is DSRP. During ELINT system sanity checks, after observing ELINT LOBs and AIS/ADSB targets of opportunity and terminating the mission, the procedure is to power off the DSRP sensor.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "DSRP Digital Spatial Receiver and Processor",
+            "ELINT 9. Power off DSRP sensor"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Electronic Intelligence (ELINT), and what is the procedure for powering on ELINT via SyMon?",
+        "answer": "The abbreviation for Electronic Intelligence is ELINT. The procedure for powering on ELINT via SyMon is to select it from the SyMon power tree, as required.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "ELINT Electronic Intelligence",
+            "16. The following systems can be powered on, via SyMon power tree, as required\ne. SDN"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Electronic Surveillance Measures (ESM), and what is the procedure for powering on ESM via SyMon?",
+        "answer": "The abbreviation for Electronic Surveillance Measures is ESM. The procedure for powering on ESM via SyMon is to select it from the SyMon power tree, as required.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "ESM Electronic Surveillance Measures",
+            "16. The following systems can be powered on, via SyMon power tree, as required\nd. ESM"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Graphic User Interface (GUI), and what is the abbreviation for High Frequency (HF)?",
+        "answer": "The abbreviation for Graphic User Interface is GUI, and the abbreviation for High Frequency is HF.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "GUI Graphic User Interface",
+            "HF High Frequency"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Liquid Cooling System (LCS), and what is the note regarding avoiding liquid freezing?",
+        "answer": "The abbreviation for Liquid Cooling System is LCS. A note states that to avoid liquid freezing, it is essential that the LCS system will be activated during all flight.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "LCS Liquid Cooling System",
+            "NOTE: To avoid liquid freezing, it is essential that LCS system will be activate during all flight."
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Multi-Channel COMINT Sensor (MCCS), and what should be verified regarding MCCS components during COMINT system sanity checks?",
+        "answer": "The abbreviation for Multi-Channel COMINT Sensor is MCCS. During COMINT system sanity checks, after powering on the COMINT system via SyMon and waiting for the BIT state to finish and change to SCAN mode, it should be verified that MCCS components are green.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "MCCS Multi-Channel COMINT Sensor",
+            "COMINT System Sanity\n1. Via SyMon\na. Power on COMINT system\nb. Wait for BIT state to finish and change to SCAN mode\nc. Verify that MCCS components are green"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Main Power Distribution Box (MPDB), and what is the state for 'MS FANS' CB in the MPDB before power-up?",
+        "answer": "The abbreviation for Main Power Distribution Box is MPDB. Before power-up, the 'MS FANS' Circuit Breaker (CB) in the MPDB should be in the OPEN (NOP) state.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "MPDB Main Power Distribution Box",
+            "LOCATION NAME STATE MPDB MS FANS OPEN (NOP)"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Network Communication Computer (NCC), and what is the procedure for connecting to the SDN-NCC computer with Remote Desktop during SDN system sanity checks?",
+        "answer": "The abbreviation for Network Communication Computer is NCC. During SDN system sanity checks, after operating the SDN system via SyMon, the procedure is to connect to the SDN-NCC computer with Remote Desktop.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "NCC Network Communication Computer",
+            "SDN 2. Connect to SDN-NCC computer with Remote Desktop"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Power Distribution Unit (PDU), and what is the state for 'PDU#6 CTRL' switch in the Cockpit before power-up?",
+        "answer": "The abbreviation for Power Distribution Unit is PDU. Before power-up, the 'PDU#6 CTRL' switch in the Cockpit should be in the ON state.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "PDU Power Distribution Unit",
+            "LOCATION NAME / DESCRIPTION STATE Cockpit PDU#6 CTRL ON"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Radar Control Unit (RCU), and what is the procedure for restarting the RCU during an RDR system restart?",
+        "answer": "The abbreviation for Radar Control Unit is RCU. During an RDR system restart, after closing the PSP Launcher and MSDC windows and opening the CTS application, the procedure for restarting the RCU is to open the \"Power Control\" window, press the \"RCU\" button, wait for it to turn grey, then press the \"RCU\" button again and wait for it to turn back green.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "RCU Radar Control Unit",
+            "RDR - Restart Procedure\n3. Open CTS application:\nc. Press \"RCU\" button, wait for it to turn grey\nd. Press \"RCU\" button again and wait for it to turn back green"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Removable Media (RM), and what should be verified regarding RM free space in SyMon during Mission System Sanity checks?",
+        "answer": "The abbreviation for Removable Media is RM. During Mission System Sanity checks in SyMon, it should be verified that RM has at least 30% free space.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "RM Removable Media",
+            "Mission System Sanity\n2. Open SyMon application\nc. Verify that RM have at least 30% free space"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Recording Review System (RRS), and what should be verified regarding RRS recordings during routine work's ongoing monitoring?",
+        "answer": "The abbreviation for Recording Review System is RRS. During routine work's ongoing monitoring, for RRS recordings, both the displays and audio channels should be checked.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "RRS Recording Review System",
+            "Routine of Work\nOngoing Monitoring\n4. RRS recordings\na. Displays\nb. Audio channels"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Satellite Communication (SATCOM), and what is the procedure for setting the SAT antenna to TAKEOFF LANDING mode before landing?",
+        "answer": "The abbreviation for Satellite Communication is SATCOM. Before landing, the procedure is to set the SAT antenna to TAKEOFF LANDING mode via CCC.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "SAT/SATCOM Satellite Communication",
+            "4. Via CCC, Set SAT antenna to TAKE OFF LANDING mode"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Signal Intelligence (SIGINT), and what is the abbreviation for System of Systems (SOS)?",
+        "answer": "The abbreviation for Signal Intelligence is SIGINT, and the abbreviation for System of Systems is SOS.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "SIGINT Signal Intelligence",
+            "SOS System of Systems"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for System Monitoring (SYMON), and what is the procedure for powering on SDN via SyMon?",
+        "answer": "The abbreviation for System Monitoring is SYMON. The procedure for powering on SDN via SyMon is to select it from the SyMon power tree, as required.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "SYMON System Monitoring",
+            "16. The following systems can be powered on, via SyMon power tree, as required\ne. SDN"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for To Be Determined (TBD), and what is the abbreviation for Transmit Receive Unit (TRU)?",
+        "answer": "The abbreviation for To Be Determined is TBD, and the abbreviation for Transmit Receive Unit is TRU.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "TBD To Be Determined",
+            "TRU Transmit Receive Unit"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Time Source Unit (TSU), and what should be verified regarding time on the TSU Front and TSU Aft front panels during routine work's ongoing monitoring?",
+        "answer": "The abbreviation for Time Source Unit is TSU. During routine work's ongoing monitoring, for time on the TSU Front and TSU Aft front panels, it should be verified that there is no Holdover state and that 4 green LEDs are illuminated.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "TSU Time Source Unit",
+            "Routine of Work\nOngoing Monitoring\n3. Time (TSU Front and TSU Aft front panels)\na. No Holdover state\nb. 4 green LEDs"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Ultra-High Frequency (UHF), and what is the state for 'UHF (x3) POWER' switch in Rack-1 before power-up?",
+        "answer": "The abbreviation for Ultra-High Frequency is UHF. Before power-up, the 'UHF (x3) POWER' switch in Rack-1 should be in the AUTO ON state.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "UHF Ultra-High Frequency",
+            "LOCATION RACK-1 NAME / DESCRIPTION UHF (x3) POWER STATE AUTO ON"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Universal Serial Bus (USB), and what is the abbreviation for Universal Time Coordinated (UTC)?",
+        "answer": "The abbreviation for Universal Serial Bus is USB, and the abbreviation for Universal Time Coordinated is UTC.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "USB Universal Serial Bus",
+            "UTC Universal Time Coordinated"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Very High Frequency (VHF), and what is the state for 'VHF-2 CONTROL' switch in Rack-2 before power-up?",
+        "answer": "The abbreviation for Very High Frequency is VHF. Before power-up, the 'VHF-2 CONTROL' switch in Rack-2 should be in the AS REQUIRED state.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "VHF Very High Frequency",
+            "LOCATION RACK-2 NAME / DESCRIPTION VHF-2 CONTROL STATE AS REQUIRED"
+        ]
+    },
+    {
+        "query": "What is the abbreviation for Voice over Internet Protocol (VoIP / VOIP), and what is the abbreviation for Weight on Wheels (WOW)?",
+        "answer": "The abbreviation for Voice over Internet Protocol is VoIP / VOIP, and the abbreviation for Weight on Wheels is WOW.",
+        "type": "multi_hop",
+        "verbatim_quotes": [
+            "VoIP / VOIP Voice over Internet Protocol",
+            "WOW Weight on Wheels"
+        ]
+    }
+]

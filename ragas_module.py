@@ -17,7 +17,7 @@ class RagasTestingModule:
     def __init__(self, ragas_embeddings, judge_llm, vector_db_retriever):
         self.ragas_embeddings = ragas_embeddings
         self.ragas_judge_llm = judge_llm
-        self.ragas_node = None
+        self.ragas_nodes = None
         self.index = vector_db_retriever
     
     
@@ -119,7 +119,7 @@ class RagasTestingModule:
         if final_dataset:
             evaluation_df = pd.DataFrame(final_dataset)
         else:
-            evaluation_df = pd.DataFrame(columns = ['user_input', 'reference', 'source_context', 'ids'])
+            evaluation_df = pd.DataFrame(columns = ['user_input', 'reference', 'ground_truth_contexts', 'ground_truth_ids','query_type'])
 
         return evaluation_df
     
@@ -152,7 +152,7 @@ class RagasTestingModule:
             query_embedding_np = np.array([query_embedding]).astype("float32")
             
             # 2. Search the FAISS index (Retrieve top 1 result)
-            distances, indices = self.index.search(query_embedding_np, 1)
+            distances, indices = self.index.search(query_embedding_np, k)
             
             # 3. Extract the actual text based on the returned indices
             # indices[0] contains the list of IDs found for the first query

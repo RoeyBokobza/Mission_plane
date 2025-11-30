@@ -25,6 +25,7 @@ class ParsingAndChunkingHandler:
         self.raw_elements = None
         self.num_raw_elements = None
         self.cleaned_elements = None
+        self.final_chunks = None
         
     
     def parse_pdf_to_elements(self):
@@ -60,24 +61,32 @@ class ParsingAndChunkingHandler:
         print(f"   -> Removed {self.num_raw_elements - len(cleaned_elements)} noise elements out of {self.num_raw_elements}.")
         self.cleaned_elements = cleaned_elements
         
-        
-    def find_and_chunk_title_wise(self, cleaned_elements, max_characters=11000, combine_text_under_n_chars=10, overlap=1000):
+    def assign_id_to_elements(self):
+        id_num = 0
+        for e in tqdm(self.cleaned_elements, desc="Assigning IDs to Elements"):
+            e.metadata.id = id_num
+            id_num +=1
+        return True
+
+
+    def find_and_chunk_title_wise(self, max_characters=11000, combine_text_under_n_chars=10, overlap=1000):
         # 4. Apply Chunking on the CLEAN list
         print("2. Chunking filtered elements...")
-        chunks = chunk_by_title(
-            elements=cleaned_elements,
+        self.final_chunks = chunk_by_title(
+            elements=self.cleaned_elements,
             max_characters=max_characters,
             combine_text_under_n_chars=combine_text_under_n_chars,
             overlap = overlap
             # new_after_n_chars=4000
         )
 
-        id_num = 0
-        for c in tqdm(chunks, desc="Assigning IDs to Chunks"):
-            c.metadata.id =id_num
-            id_num +=1 
 
-        return chunks
+        # id_num = 0
+        # for c in tqdm(chunks, desc="Assigning IDs to Chunks"):
+        #     c.metadata.id =id_num
+        #     id_num +=1 
+
+        # return chunks
     
     def handle_table_in_chunk_for_embedding(self, element):
         """

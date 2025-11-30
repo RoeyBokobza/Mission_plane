@@ -1,16 +1,46 @@
-EMBEDDING_MODEL_NAME = "BAAI/bge-small-en-v1.5"
+""" 
+Trial Running Folder
+"""
+TRIAL_FOLDER_NAME = "/Results/Trial_1"
+TRIAL_DESC = "Initial Trial with BGE Small Embeddings and Nvidia LLM Judge. In this trial there is no table handling, " \
+"no chunking by title, everything as naive as it can be. Using FAISS L2 as vector DB."
 
+
+
+
+""" 
+Embedding Model
+"""
+EMBEDDING_MODEL_NAME = "BAAI/bge-small-en-v1.5"
 EMBEDDING_DIMENSION = 384
 
+"""
+DB config
+"""
+NUM_DOCS_TO_RETRIEVE = 1
 
-LLM_JUDGE_MODEL_TYPE = "Google Gemini"
-## Google Gemini Model as LLM as a Judge
+""" 
+Judge LLM config
+"""
+# LLM_JUDGE_MODEL_TYPE = "Google Gemini"
+LLM_JUDGE_MODEL_TYPE = "Nvidia"
 
 GOOGLE_GENAI_API_KEY = "AIzaSyCrC4ep_YrCUrCMQLFvudbfnh-tgIMW62A"
-GOOGLE_GENAI_MODEL_NAME = "gemini-2.5-flash"
+NVIDIA_API_KEY = "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"
 
-SINGLE_HOP_NUM_PAIRS = 10
-MULTI_HOP_NUM_PAIRS = 10
+# MODEL_NAME = "gemini-2.5-flash"
+MODEL_NAME = "mistralai/mixtral-8x22b-instruct-v0.1"
+
+""" 
+Eval Dataset Creation Prompts.
+"""
+
+SINGLE_HOP_NUM_PAIRS = 50
+MULTI_HOP_NUM_PAIRS = 50
+
+""" 
+Prompts Configuration
+"""
 
 SINGLE_HOP_PROMPT = """
                     You are an expert creating an evaluation dataset for a RAG system.
@@ -60,6 +90,7 @@ MULTI_HOP_PROMPT = """
                             {{
                                 "query": "Complex query connecting A and B...",
                                 "answer": "The comprehensive answer combining A and B.",
+                                "type": "multi_hop",
                                 "verbatim_quotes": [
                                     "Quote supporting part A",
                                     "Quote supporting part B"

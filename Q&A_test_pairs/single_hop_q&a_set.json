@@ -1,0 +1,562 @@
+[
+    {
+        "query": "What is the document number for the Multi-mission Suite Handbook?",
+        "answer": "The document number for the Multi-mission Suite Handbook is 16814.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "DOCUMENT NO. 16814"
+        ]
+    },
+    {
+        "query": "What is the purpose of the CB-AGS Handbook?",
+        "answer": "The CB-AGS Handbook is designed to guide and assist qualified operators and technicians with operating the AMS. It provides general operating instructions under different conditions and instructions for handling system failures. Operators and technicians must have undergone training courses for the knowledge and operation of the AMS and passed appropriate certifications to operate it.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "This document designated to guide and assist operators and technicians with operating the AMS.",
+            "This document contains general operating instructions, under different operating conditions, and operating instructions for handling system failures.",
+            "This document is intended for qualified operators and technicians only, who have undergone training courses for the knowledge and operation the AMS.",
+            "WARNING: An operator or technician who has not passed the appropriate certifications may not operate the AMS."
+        ]
+    },
+    {
+        "query": "What is the definition of a WARNING in this document?",
+        "answer": "A WARNING in this document highlights an essential operating or maintenance procedure, practice, condition, or statement which, if not strictly observed, could result in injury to, or death of personnel or long-term health hazards.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "WARNING: A warning highlights an essential or maintenance procedure, practice, condition, statement, etc., which, if not strictly observed, could result in injury to, or death of personnel or long-term health hazards."
+        ]
+    },
+    {
+        "query": "What does 'AMS' stand for in the List of Abbreviations?",
+        "answer": "In the List of Abbreviations, 'AMS' stands for Airborne Mission Segment.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "AMS Airborne Mission Segment"
+        ]
+    },
+    {
+        "query": "What does 'LCS' stand for in the List of Abbreviations?",
+        "answer": "In the List of Abbreviations, 'LCS' stands for Liquid Cooling System.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "LCS Liquid Cooling System"
+        ]
+    },
+    {
+        "query": "What is the typical current value for the left 270VDC generator when all AMS systems are in standby mode?",
+        "answer": "When all AMS systems are in standby mode, the typical current value for the left 270VDC generator is 38A.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "All AMS STBY 38 38 5"
+        ]
+    },
+    {
+        "query": "What is the maximum temperature for transient operation of the Liquid Cooling System (LCS)?",
+        "answer": "The maximum temperature for transient operation of the Liquid Cooling System (LCS) is 40°C.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "Maximum temperature for transient operation: 40°C"
+        ]
+    },
+    {
+        "query": "What is the minimum temperature required for MS operation to start at full load?",
+        "answer": "The minimum temperature required for MS operation to start at full load is 10°C.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "Minimum temperature for MS operation start full load: 10°C"
+        ]
+    },
+    {
+        "query": "Which systems must use LCS cooling?",
+        "answer": "The MS, RDR, and ELINT systems must use LCS cooling.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "MS, RDR and ELINT systems must use LCS cooling"
+        ]
+    },
+    {
+        "query": "What is prohibited regarding the operation of SAT and LOS communication systems?",
+        "answer": "Operating SAT and LOS communication systems simultaneously is prohibited.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "Operating SAT & LOS systems simultaneously is prohibited"
+        ]
+    },
+    {
+        "query": "What is the limitation for the EOIR system during taxi, takeoff, and landing?",
+        "answer": "The EOIR system must be powered on in STOW mode during taxi, takeoff, and landing.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "EOIR must be powered on, on STOW mode, during taxi, takeoff and landing"
+        ]
+    },
+    {
+        "query": "What is the purpose of the 'FILER' server in the system setup?",
+        "answer": "The 'FILER' server is used for file storage, specifically for all applications data storage, all systems logs storage, mapping X: network drive, and MPD/PFM local storage.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "FILER File storage • All applications data storage • All systems logs storage • Mapping X: network drive • MPD\\PFM local storage"
+        ]
+    },
+    {
+        "query": "Which server contains the 'Mission apps' and affects 'Mission operation' functionality?",
+        "answer": "The 'MSN-GENERAL' server contains the Mission apps and affects Mission operation functionality, including INS Navigation (excluding MSDC), Symon data (FIE model), AVN avionics discretes, and IO2LAN discretes.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "MSN- GENERAL Mission apps • Mission operation o INS Navigation (exclude MSDC) o Symon data (FIE model) o AVN avionics discretes o IO2LAN discretes"
+        ]
+    },
+    {
+        "query": "What is the first step in the 'Before Flight' procedure?",
+        "answer": "The first step in the 'Before Flight' procedure is Mission Planning at MSS, which involves preparing the MPD and saving it on the removable media, and checking the removable media's free space availability.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "1. Mission Planning at MSS",
+            "a. Prepare MPD and save it on the removable media",
+            "b. Check the removable media free space availability"
+        ]
+    },
+    {
+        "query": "What is the caution regarding the use of circuit breakers?",
+        "answer": "The caution regarding circuit breakers states not to use them as on/off switches, as failure to comply may result in damage to electrical equipment.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "CAUTION: Do not use the circuit breakers as on/off switches. Failure to comply may result in damage to electrical equipment"
+        ]
+    },
+    {
+        "query": "What is the required state for the 'EFB L' and 'EFB R' circuit breakers in the cockpit before power up?",
+        "answer": "Before power up, the 'EFB L' and 'EFB R' circuit breakers in the cockpit must be in the 'CLOSE' state.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "Cockpit EFB L CLOSE",
+            "EFB R CLOSE"
+        ]
+    },
+    {
+        "query": "What is the required state for the 'GPS SOURCE' switch on the GPS PANEL before power up?",
+        "answer": "Before power up, the 'GPS SOURCE' switch on the GPS PANEL must be set 'AS REQUIRED'.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "GPS PANEL GPS SOURCE AS REQUIRED"
+        ]
+    },
+    {
+        "query": "How long should one wait for network establishment during Mission Systems Power Up?",
+        "answer": "During Mission Systems Power Up, one should wait six (6) minutes for network establishment.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "Wait six (6) minutes (for network establishment)"
+        ]
+    },
+    {
+        "query": "What is the typical actual range for LCS fluid supply temperature?",
+        "answer": "The typical actual range for LCS fluid supply temperature is 27 ±2°C.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "Typical actual range: 27 ±2°C"
+        ]
+    },
+    {
+        "query": "What is the caution regarding the SATCOM system during takeoff and landing?",
+        "answer": "The SATCOM system must be powered on during takeoff and landing.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "CAUTION: SATCOM system must be powered on during takeoff and landing"
+        ]
+    },
+    {
+        "query": "What is the caution regarding transmitting SATCOM or LOS on the ground?",
+        "answer": "It is forbidden to transmit SATCOM or LOS on the ground without direct external cooling to their amplifier in the boiler room.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "CAUTION: It is forbidden to transmit SATCOM or LOS on the ground, without direct external cooling to their amplifier in the boiler room"
+        ]
+    },
+    {
+        "query": "What is the required Hybrid FOM value for the NAVIGATION system in SyMon?",
+        "answer": "The required Hybrid FOM value for the NAVIGATION system in SyMon is 26.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "Verify that Hybrid FOM value is 26 and the NAV data is correct"
+        ]
+    },
+    {
+        "query": "What should be done with ECS gaspers above 6Kft after takeoff?",
+        "answer": "Above 6Kft after takeoff, ECS gaspers can be opened at the operators’ area.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "ECS gaspers can be opened at the operators’ area"
+        ]
+    },
+    {
+        "query": "How often is it recommended to perform the Cabin Scanning procedure?",
+        "answer": "It is recommended to perform the Cabin Scanning procedure every hour.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "NOTE: This procedure is recommended to be performed every hour"
+        ]
+    },
+    {
+        "query": "What is the first step to shut down the RDR system?",
+        "answer": "The first step to shut down the RDR system is to close the PSP Launcher application.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "1. Close PSP Launcher application"
+        ]
+    },
+    {
+        "query": "What is the first step in the 'Technical Pre-Flight Procedure'?",
+        "answer": "The first step in the 'Technical Pre-Flight Procedure' is to ensure the AMS logbook has no overdue waivers.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "Ensure AMS logbook has no overdue waivers"
+        ]
+    },
+    {
+        "query": "What is the caution regarding operating the RDR system without proper cooling?",
+        "answer": "Operating the RDR system without proper cooling can cause hardware damage to the unit, so it is crucial to verify that proper LCS cooling (LCS pumps operate) is available for both loops.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "CAUTION: Operating RDR system without proper cooling can cause hardware damage for unit - verify proper LCS cooling (LCS pumps operate) is available for both loops."
+        ]
+    },
+    {
+        "query": "What is the first step to power up the RDR system?",
+        "answer": "The first step to power up the RDR system is to verify that the MS power up process has been accomplished.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "1. Verify that MS power up process accomplished"
+        ]
+    },
+    {
+        "query": "How long could the RDR Power up process take?",
+        "answer": "The RDR Power up process could take up to 8 minutes.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "NOTE: RDR Power up process could take up to 8 minutes"
+        ]
+    },
+    {
+        "query": "What is the first step in the RDR - IBIT Procedure?",
+        "answer": "The first step in the RDR - IBIT Procedure is to click the 'setting' button on the MSDC Master user interface.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "1. OnMSDC Master user: a. Click the \"setting\" button"
+        ]
+    },
+    {
+        "query": "How long should the IFA process take?",
+        "answer": "The IFA (In Flight Alignment) process should take up to 15 minutes, with a counter displayed in the MACC Init State field.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "Note: The IFA process should take up to 15 minutes. Counter is displayed at the MACC Init State field"
+        ]
+    },
+    {
+        "query": "What is the first step in the Liquid Cooling System (LCS) - Ground Preparation Procedure?",
+        "answer": "The first step in the Liquid Cooling System (LCS) - Ground Preparation Procedure is to connect ground cooling cart hoses to the two external heat exchanger inlets.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "Connect ground cooling cart hoses to the 2 (two) external heat exchanger inlets"
+        ]
+    },
+    {
+        "query": "What should be done if a FAULT indication appears at the MS RACKS section of the LCS Control Panel?",
+        "answer": "If a FAULT indication appears at the MS RACKS section of the LCS Control Panel, it means LCS or ECS is not selected.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "NOTE: A FAULT indication will appear at the MS RACKS section of the LCS Control Panel if LCS or ECS is not selected."
+        ]
+    },
+    {
+        "query": "What is the caution regarding turning on LCS pumps on the ground without a ground cooling cart?",
+        "answer": "It is cautioned not to turn on LCS pumps if the airplane is on the ground and without the ground cooling cart attached to the external heat exchanger inlets, as starting the pumps will cause the fluid to heat up significantly over a short period of time.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "CAUTION: At this point, do not turn on LCS pumps, if the airplane is on the ground and without the ground cooling cart attached to the external heat exchanger inlets. If pumps will be started, the fluid will heat up significantly over a short period of time."
+        ]
+    },
+    {
+        "query": "What is the first step in the Liquid Cooling System (LCS) - Turn Off Procedure?",
+        "answer": "The first step in the Liquid Cooling System (LCS) - Turn Off Procedure is to ensure the RDR system (hardware) is OFF.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "1. Ensure RDR system (hardware) is OFF"
+        ]
+    },
+    {
+        "query": "How is the LCS Controller powered OFF?",
+        "answer": "The LCS Controller is powered OFF by pressing the CNTRLR PWR button.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "Press CNTRLR PWR button to power OFF LCS Controller"
+        ]
+    },
+    {
+        "query": "What is the first step if the 'Power ON-OFF' script has red lines or is stuck during Mission Startup?",
+        "answer": "If the 'Power ON-OFF' script has red lines or is stuck during Mission Startup, the first step is to check the specific system connection at the 'Pinger' application. If the VM is red on 'Pinger', open VM Center, right click on the faulty VM and select 'Power Reset'.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "1. Check the specific system connection at the \"Pinger\" app.",
+            "2. If the VM is red on \"Pinger\", open VM Center, right click on the faulty VM and select \"Power Reset\""
+        ]
+    },
+    {
+        "query": "What action should be taken if the SyMon status has a 'Server red heart icon' indicating no connection to Symon after more than 10 minutes?",
+        "answer": "If the SyMon status has a 'Server red heart icon' indicating no connection to Symon after more than 10 minutes, the MSN-MTS VM should be reset.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "SyMon SyMon status has \"Server red heart icon (with connection\" - a specific alert) no connection More then 10 min. to Symon after SyMon server powered up Reset MSN-MTS VM"
+        ]
+    },
+    {
+        "query": "What should be done if the TSU Display shows 'TIME: HOLD OVER' and '1PPS: HOLD OVER' for more than 5 minutes after TSU power-up?",
+        "answer": "If the TSU Display shows 'TIME: HOLD OVER' and '1PPS: HOLD OVER' for more than 5 minutes after TSU power-up, you should reset the TSU via SyMon, or manually reset the GPS on the TSU front panel by navigating to '15. RESET GPS' and confirming.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "TSU TSU Display shows 'TIME: HOLD OVER' '1PPS: HOLD OVER' more than 5 minutes after TSU power-up Via SyMon, Reset TSU. Or, 1. On the TSU front panel: Press and hold the MENU button more than 2 seconds 2. Press on '↑' button to change the value to 76 and press ENTER 3. Press on '←' button to move the cursor to '15. RESET GPS' and press ENTER 4. Press on '→' button (yes) and then press ENTER 5. Wait up to 13 minutes for the TSU display to show: • TIME: GPS XX SV' • TSU-Front: '1PPS: GPS' • TSU-Aft: '1PPS: AUTO"
+        ]
+    },
+    {
+        "query": "What should be done if the Removable Media (RM) U: partition is not recognized or accessible on an OWS?",
+        "answer": "If the Removable Media (RM) U: partition is not recognized or accessible on an OWS, ensure the RM is properly inserted into its socket on UTS, then open Remote Desktop to UTS server and run the 'Mount-Canister' shortcut. Verify the D: partition (RM) is identified, and on OWS, reconnect to the U: partition (\\\\uts\\rm path). Finally, in SyMon, Mission system, reset the 'Mission Agent' process.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "Removable Media Partition locked (RM) not and encrypted recognized, and has no access; Or U: partition is not accessible 1. Ensure RM inserted into its socket on UTS properly - RM led is illuminate. 2. Open Remote Desktop to UTS server (\"uts\") and run \"Mount-Canister\" shortcut 3. Verify D: partition (RM) is identified and presenting its content 4. On OWS, reconnect to U: partition (\\\\uts\\rm path) 5. In SyMon, Mission system, reset \"Mission Agent\" process"
+        ]
+    },
+    {
+        "query": "What is the cause if the RDR cannot transmit, but all normal RDR SMS controller indications are OK?",
+        "answer": "If the RDR cannot transmit despite all normal RDR SMS controller indications being OK, the cause is an SMS controller failure or an out-of-limit AMS power malfunction, with an SMS alert activated on CTS.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "SMS All normal RDR SMS controller indications are OK, failure, or out of but the RDR cannot limit AMS power transmit. malfunction On CTS, SMS alert is activated"
+        ]
+    },
+    {
+        "query": "What should be done if one of the PSPs DBF buttons is down?",
+        "answer": "If one of the PSPs DBF buttons is down, press the DBF start button on the relevant PSP. If the problem persists, perform the RDR - PSP Restart Procedure.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "PSP One of the PSPs DBF stopped DBF buttons is down 1. Press DBF start button on relevant PSP 2. If problem persists, perform RDR - PSP Restart Procedure"
+        ]
+    },
+    {
+        "query": "What is the follow-on action if the ELINT HMI does not display 'host_shlc'?",
+        "answer": "If the ELINT HMI does not display 'host_shlc', the first action is to restart the ELINT HOST process via SyMon. If the problem persists, reboot the SIG-DB, SIG-HOST, and DSE-SP VMs via VM-Center.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "HMI On HMI, \"host_shlc\" field is not displayed No connection to the HOST DB 1. Via Symon, restart ELINT process: • HOST If problem persists: 2. On Chrome, select VM-Center. Right click on the following VMs and select \"Reset Guest OS\": • SIG-DB • SIG-HOST • DSE-SP Note: This can affect COMINT system"
+        ]
+    },
+    {
+        "query": "What should be done if the ESM state is UNKNOWN?",
+        "answer": "If the ESM state is UNKNOWN, enter VM-Center via Chrome, right-click on the ESM VM, and select 'Restart guest OS' from the 'Power' menu.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "ESM ESM state is UNKNOWN Power fell down consequence 1. On Chrome, enter to VM-Center 2. Right click on ESM VM. At the \"Power\" menu select \"Restart guest OS\""
+        ]
+    },
+    {
+        "query": "What is the follow-on action if 'BEEP' sounds are heard on CSM1-4 headphones and no CSM channels are heard?",
+        "answer": "If 'BEEP' sounds are heard on CSM1-4 headphones and no CSM channels are heard, reset the IC DAIU-AJB via SyMon. Note that during the reset, there will be no intercom for all users.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "COMINT \"BEEP\" sounds on CSM1-4 headphones; No heard CSM channels Reset IC DAIU-AJB Via SyMon. • During the reset there will no intercom for all users"
+        ]
+    },
+    {
+        "query": "What should be done if the UHF Radio does not transmit because it is shut off in E-RADIO mode?",
+        "answer": "If the UHF Radio does not transmit because it is shut off in E-RADIO mode, change the Radio to Single mode, power off the URC or switch the relevant VCU knob to off, and then power on the Radio.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "UHF Radio not transmit Radio shut off in E-RADIO mode 1. Change Radio to Single mode 2. Power off the URC, or switch the relevant VCU knob to off 3. Power on the Radio"
+        ]
+    },
+    {
+        "query": "What should be done if the pilots constantly hear the cabin, even though PLT or PVT channels are off?",
+        "answer": "If the pilots constantly hear the cabin even though PLT or PVT channels are off, the AJB-DAIU and AJB-GW+RB should be shut off and then powered on via SyMon, under the Intercom system Power Tree. Note that all users will be affected during this process.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "Pilots constantly hear the cabin, even though PLT or PVT channels are off Irregular aircraft powerup Via SyMon, Intercom system, Power Tree, shut off, then power on • AJB-DAIU • AJB-GW+RB Note: All users will be affected"
+        ]
+    },
+    {
+        "query": "What should be done if the SATCOM Modem Lock is RED and the Antenna On Target is RED?",
+        "answer": "If the SATCOM Modem Lock is RED and the Antenna On Target is RED, first verify the Rx frequency validation on the CCC Control Panel and change PFM if required. Also, verify Tx frequency validation and that the ground station is transmitting. If the problem persists, reset the SAT system by powering OFF and then ON the SATCOM system via SyMon or CCC Client, and wait up to 5 minutes for it to finish powering up.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "SATCOM Modem Lock is RED Antenna On Target is RED 1. On CCC Control Panel, verify Rx frequency validation. Change PFM if required. 2. Verify with ground station: • Tx frequency validation. • Station transmitting. If problem Via SyMon or via CCC persists, reset Client: SAT system: Power OFF SATCOM system and power ON. Wait up to 5 minutes for the SATCOM system to finish power up."
+        ]
+    },
+    {
+        "query": "What should be done if the SATCOM Modem Lock is RED and the Antenna On Target is GREEN, but there is no data link (Quality=1)?",
+        "answer": "If the SATCOM Modem Lock is RED and the Antenna On Target is GREEN, but there is no data link (Quality=1), verify SATCOM TX DataRate is set to High on the CCC Control Panel and verify with the ground station that their TX DataRate is also High.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "SATCOM Modem Lock is RED Antenna On Target is GREEN No data link (Quality=1) On CCC Control Panel: 1. Verify SATCOM TX DataRate = High 2. Verify with ground station: TX DataRate = High"
+        ]
+    },
+    {
+        "query": "What should be done if the LOS Modem Lock is RED?",
+        "answer": "If the LOS Modem Lock is RED, it indicates that LOS is not pointing the ground antenna or the ground station is not transmitting. Verify all parameters on the LOS Control/Status tab are correct (Up Ch#, Down Ch#, GND etc.) and confirm parameter identity with the ground crew. If the problem persists, reset the LOS system by setting LOS to OFF then ON on the CONTROL tab, or power OFF and ON via SyMon.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "LOS Modem Lock is RED LOS is not pointing the ground antenna. Ground station is not transmitting. 1. On LOS Control/Status tab, Verify that all parameters are correct (Up Ch#, Down Ch#, GND etc.) 2. Verify with the ground crew, parameters identity If problem persist, reset LOS system: On the CONTROL tab, set LOS to OFF, then set LOS to ON. Or power OFF and ON via SyMon"
+        ]
+    },
+    {
+        "query": "What is the follow-on action if the IES D: Partition is encrypted and locked, preventing access to products on IVA?",
+        "answer": "If the IES D: Partition is encrypted and locked, preventing access to products on IVA, remote desktop to the IES server (\"ies\") and activate the \"avago-mount-unlock-disk\" shortcut.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "IES Cannot see IES D: Partition products (SAR, encrypted and sub-images…) on locked (IES IVA. uploaded before Search results DC server) presents an empty table 1. Remote desktop to IES server (\"ies\") 2. Activate \"avago- mount-unlock-disk\" shortcut"
+        ]
+    },
+    {
+        "query": "What should be done if the NAVY MC4I system shows no data sent or received?",
+        "answer": "If the NAVY MC4I system shows no data sent or received, verify the VHF2-CONTROL panel on OWS#8 ledge has the Control switch set to RCU and the Traffic switch set to Data.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "NAVY MC4I No data sent or received VHF2 control is on Voice mode On OWS#8 ledge, VHF2-CONTROL panel, verify Control switch = RCU Traffic switch = Data"
+        ]
+    },
+    {
+        "query": "What should be done if the SDN system is not receiving a 1PPS signal?",
+        "answer": "If the SDN system is not receiving a 1PPS signal, check the TSU-AFT for 4 green LEDs and GPS mode, check the CLDU for 4 green LEDs, and then reset TSU-AFT via SyMon.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "SDN Not received 1PPS signal 1. Check TSU-AFT with 4 green leds, GPS mode 2. Check CLDU with 4 green leds 3. Via SyMon, reset TSU-AFT"
+        ]
+    },
+    {
+        "query": "What should be done if the EOIR Primary or Secondary video is stuck or not displayed on the EOS HMI?",
+        "answer": "If the EOIR Primary or Secondary video is stuck or not displayed on the EOS HMI, reset the EOS client.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "EOIR On EOS HMI, Primary or Secondary video is stuck or not displayed Reset the EOS client"
+        ]
+    },
+    {
+        "query": "What is the first step in the 'Hand Over' procedure after landing?",
+        "answer": "The first step in the 'Hand Over' procedure after landing is to not perform any normal 'After landing' steps.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "After landing a. Do not perform any normal \"After landing\" step"
+        ]
+    },
+    {
+        "query": "What is the first step in the 'Emergency System Shutdown' procedure?",
+        "answer": "The first step in the 'Emergency System Shutdown' procedure is to press the EMERG DISC button on the MCP.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "On MCP, press EMERG DISC button"
+        ]
+    },
+    {
+        "query": "What is the caution regarding the 'AEP Generator Failure - Using the Tie Bus' procedure?",
+        "answer": "The 'AEP Generator Failure - Using the Tie Bus' procedure is designated for emergency, one-of-a-kind events only, and it is forbidden to test or use it otherwise.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "CAUTION: This procedure designated for emergency, one of kind event only! Otherwise, it is forbidden to test it or to use it."
+        ]
+    },
+    {
+        "query": "What is the first step in the 'Global Erasure Procedure'?",
+        "answer": "The first step in the 'Global Erasure Procedure' is to power on AMS and all the classified systems.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "Power on AMS and all the classified systems"
+        ]
+    },
+    {
+        "query": "What is the caution associated with the 'Global Erasure Procedure'?",
+        "answer": "The caution associated with the 'Global Erasure Procedure' is that it is a disruptive action, and programs and data will be erased.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "CAUTION: The following is a disruptive action. programs and data will be erased."
+        ]
+    },
+    {
+        "query": "What is the total number of pages in this publication?",
+        "answer": "The total number of pages in this publication is 108.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "Total number of pages in this publication is 108, comprising:"
+        ]
+    },
+    {
+        "query": "When was Version 1 of the document issued?",
+        "answer": "Version 1 of the document was issued on December 1, 2024.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "December 2024 Version 1 1 01/12/2024"
+        ]
+    },
+    {
+        "query": "What is the controlled range for the LCS fluid supply temperature?",
+        "answer": "The controlled range for the LCS fluid supply temperature is 25 ±10°C.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "Controlled range: 25 ±10°C."
+        ]
+    },
+    {
+        "query": "What is the MS disconnect temperature for the LCS?",
+        "answer": "The MS disconnect temperature for the LCS is 50°C.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "MS disconnect temperature: 50°C."
+        ]
+    },
+    {
+        "query": "What is the required state for the 'P.S.FAN 1' and 'P.S.FAN 2' circuit breakers in the MPDB before power up?",
+        "answer": "Before power up, the 'P.S.FAN 1' and 'P.S.FAN 2' circuit breakers in the MPDB must be in the 'CLOSE' state.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "MPDB PSD-6 P.S.FAN 1 CLOSE",
+            "P.S.FAN 2 CLOSE"
+        ]
+    },
+    {
+        "query": "What is the required state for the 'RDR Tx (Left)' switch in Rack-6 before power up?",
+        "answer": "Before power up, the 'RDR Tx (Left)' switch in Rack-6 must be in the 'DISABLE' state.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "Rack-6 RDR Tx (Left) DISABLE"
+        ]
+    },
+    {
+        "query": "What is the required state for the 'E-RADIO ZEROIZE' switch in Rack-6 before power up?",
+        "answer": "Before power up, the 'E-RADIO ZEROIZE' switch in Rack-6 must be in the 'SECURED' state.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "Rack-6 E-RADIO ZEROIZE SECURED"
+        ]
+    },
+    {
+        "query": "What is the required state for the 'PDU#3 CTRL' switch in Rack-3 before power up?",
+        "answer": "Before power up, the 'PDU#3 CTRL' switch in Rack-3 must be in the 'ON' state.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "RACK-3 PDU#3 CTRL ON"
+        ]
+    },
+    {
+        "query": "What is the required state for the 'DAIU POWER' switch in Rack-1 before power up?",
+        "answer": "Before power up, the 'DAIU POWER' switch in Rack-1 must be in the 'NORMAL' state.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "RACK-1 DAIU POWER NORMAL"
+        ]
+    },
+    {
+        "query": "What is the required state for the 'SDN CONTROL PANEL ANTENNA SDN Any' switch in Rack-4 before power up?",
+        "answer": "Before power up, the 'SDN CONTROL PANEL ANTENNA SDN Any' switch in Rack-4 must be in the 'ON' state.",
+        "type": "single_hop",
+        "verbatim_quotes": [
+            "RACK-4 SDN CONTROL PANEL ANTENNA SDN Any ON"
+        ]
+    }
+]

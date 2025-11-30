@@ -1,26 +1,40 @@
 
 from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_nvidia_ai_endpoints import ChatNVIDIA
+
 import os
 import numpy as np
+import config
+from langchain_ollama import ChatOllama
 
 
 ## TODO:: change to other types ---> ollama / local LLM.
-def init_judge_llm(model_type):
+def init_judge_llm():
     """ 
     Judge LLM Initialization
     """
-
-
     judge_llm = None
+    model_type = config.LLM_JUDGE_MODEL_TYPE
 
     if model_type == "Google Gemini":
         if "GOOGLE_API_KEY" not in os.environ:
-            os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_GENAI_API_KEY")
+            os.environ["GOOGLE_API_KEY"] = config.GOOGLE_GENAI_API_KEY
 
         judge_llm = ChatGoogleGenerativeAI(
-            model=os.getenv("GOOGLE_GENAI_MODEL_NAME"),
+            model=config.MODEL_NAME,
             temperature=0.1,
         )
+    elif model_type == "Nvidia":
+        NVIDIA_api_key = config.NVIDIA_API_KEY
+        judge_llm = ChatNVIDIA(
+            model=config.MODEL_NAME,
+            api_key=config.NVIDIA_api_key,
+            temperature=0.1,
+        )
+    
+    elif model_type == "Local":
+        # # Initialize local LLM -- Needs to be pre-downloaded.
+        judge_llm = ChatOllama(model=config.MODEL_NAME)
     
     return judge_llm
 
